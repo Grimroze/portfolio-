@@ -1,0 +1,176 @@
+/* index.css */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; background: #050711; }
+body { font-family: var(--sans); color: var(--ink); background: var(--bg); font-size: var(--fs-sm); line-height: 1.5; overflow-x: hidden; }
+::selection { background: var(--lime); color: var(--lime-deep); }
+a { color: inherit; text-decoration: none; }
+
+:root {
+  /* Default Dark Obsidian Theme (pleurat.com) */
+  --bg: #050711;
+  --lime: #C0EB3A;
+  --lime-2: #E2F79A;
+  --lime-deep: #10160a;
+  --sans: 'General Sans', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --hx-radius: 18px;
+  --lime-ink: var(--lime);
+  --ink: #EFEDE2;
+  --ink-2: #B7B5AA;
+  --ink-3: #7d7c72;
+  --ink-4: #4a4a44;
+  --line: rgba(239, 237, 226, 0.13);
+  --line-2: rgba(239, 237, 226, 0.06);
+  --panel-row: rgba(30, 30, 26, 0.6);
+
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-accent: var(--lime);
+  --font-sans: var(--sans);
+  --font-mono: var(--mono);
+  --fs-micro: 9px;
+  --fs-2xs: 11px;
+  --fs-xs: 12.5px;
+  --fs-sm: 15px;
+  --fs-md: 17.5px;
+  --fs-lg: 20px;
+  --fs-xl: 24px;
+  --fs-sub: clamp(15px, 1.2vw, 16.5px);
+  --fs-lead: clamp(17px, 1.45vw, 18.5px);
+  --fs-h5: clamp(22px, 1.75vw, 24px);
+  --fs-h4: clamp(24px, 2.15vw, 30px);
+  --fs-h3: clamp(28px, 2.7vw, 39px);
+  --fs-h2: clamp(31px, 2.85vw, 41px);
+  --fs-h1: clamp(36px, 3.5vw, 54px);
+  --fs-display: clamp(42px, 4.1vw, 64px);
+  --fs-display-lg: clamp(52px, 5.4vw, 84px);
+  --fs-num: clamp(48px, 5.4vw, 84px);
+  --fs-ghost: clamp(180px, 28vw, 420px);
+  --sec-pad: clamp(70px, 12vh, 140px);
+  --sec-pad-sm: clamp(50px, 8vh, 100px);
+  --band-paper: #f3f5fa;
+  --band-paper-2: #e8ecf5;
+  --band-ground: #050711;
+  --ease-std: var(--ease);
+  --radius-card: var(--hx-radius, 14px);
+  --radius-pill: 100px;
+  --dur-1: .2s;
+  --dur-2: .32s;
+  --dur-3: .55s;
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --r-pill: 100px;
+  --r-media: 8px;
+  --ctl-pad-y: 12px;
+  --ctl-pad-x: 22px;
+  --ctl-h: 46px;
+  --ctl-pad-y-sm: 8px;
+  --ctl-pad-x-sm: 16px;
+  --ctl-h-sm: 34px;
+  --lift: -2px;
+  --ar-shift: 4px;
+  --focus-ring: var(--lime);
+}
+
+/* Light Theme overrides */
+html.mode-light, html[data-theme=light] {
+  --bg: #fbf7e6;
+  --lime-deep: #1A2200;
+  --ink: #0F1524;
+  --ink-2: #383c48;
+  --ink-3: #888a94;
+  --ink-4: #c0c1c8;
+  --line: rgba(15, 21, 36, 0.1);
+  --line-2: rgba(15, 21, 36, 0.05);
+  --panel-row: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive breakpoints */
+@media(max-width:720px) {
+  :root {
+    --sec-pad: clamp(40px, 8vh, 70px);
+    --sec-pad-sm: clamp(30px, 6vh, 50px);
+  }
+}
+@media(max-width:900px) {
+  :root {
+    --fs-micro: 10px;
+    --fs-2xs: 12px;
+    --fs-xs: 13.5px;
+    --fs-sm: 16px;
+    --fs-md: 18.5px;
+    --fs-lg: 22px;
+    --fs-xl: 26px;
+  }
+}
+
+/* Typography Utilities */
+.ui-h { margin: 0; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); }
+.ui-h-display-lg { font-size: var(--fs-display-lg); line-height: 0.94; letter-spacing: -0.04em; }
+.ui-h-display { font-size: var(--fs-display); line-height: 0.96; letter-spacing: -0.04em; }
+.ui-h-h1 { font-size: var(--fs-h1); }
+.ui-h-h2 { font-size: var(--fs-h2); }
+.ui-h-h3 { font-size: var(--fs-h3); }
+.ui-h-h4 { font-size: var(--fs-h4); }
+.ui-h-h5 { font-size: var(--fs-h5); }
+.ui-h em, .ui-h .lo { font-style: normal; color: var(--ink-3); }
+
+.ui-text { font-size: var(--fs-sm); }
+.ui-text-lead { font-size: var(--fs-lead); }
+.ui-text-body { font-size: var(--fs-sm); }
+.ui-text-small { font-size: var(--fs-xs); }
+.ui-text-caption { font-size: var(--fs-2xs); }
+.ui-text-micro { font-size: var(--fs-micro); }
+
+.ui-eyebrow { text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3); font-size: var(--fs-xs); font-family: var(--mono); }
+.ui-tone-strong { font-weight: 600; color: var(--ink); }
+.ui-tone-muted { color: var(--ink-2); }
+.ui-tone-accent { color: var(--lime); }
+
+/* Buttons */
+.hv-pill, .sv-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--r-pill); padding: var(--ctl-pad-y) var(--ctl-pad-x);
+  font-size: var(--fs-sm); font-weight: 500; cursor: pointer;
+  transition: transform var(--dur-2) var(--ease), background var(--dur-2) var(--ease), color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+}
+.hv-pill:hover, .sv-btn:hover { transform: translateY(var(--lift)); }
+.hv-pill:active, .sv-btn:active { transform: scale(0.965); }
+
+.sv-btn--amber { background: var(--lime); color: var(--lime-deep); border: none; }
+.sv-btn--ghost { border: 1px solid var(--line); background: transparent; color: var(--ink); }
+.sv-btn--ghost:hover { background: var(--line-2); border-color: var(--ink-3); }
+.sv-btn--line { border: none; background: transparent; text-decoration: underline; text-underline-offset: 4px; color: var(--ink); }
+
+/* Cards & Badges */
+.ui-card {
+  padding: clamp(18px, 2vw, 28px);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  background: var(--panel-row);
+  transition: transform var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+}
+.ui-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: var(--r-pill);
+  border: 1px solid var(--line); background: transparent;
+  font-size: var(--fs-2xs); font-weight: 500; color: var(--ink-2);
+}
+.ui-badge {
+  display: inline-flex; align-items: center;
+  padding: 4px 10px; border-radius: 6px;
+  font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.08); color: var(--ink-2);
+}
+
+/* Base Layout */
+.site-root { min-height: 100vh; background: var(--bg); transition: background 0.3s; }
+.sv-main { position: relative; z-index: 1; }
+.sv-wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+.sv-section { padding: var(--sec-pad) 0; }
+
+@media(prefers-reduced-motion:reduce) {
+  :root { --lift: 0px; --ar-shift: 0px; }
+  * { transition: none !important; }
+}
