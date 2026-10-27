@@ -190,12 +190,12 @@ export default function ReadingSection() {
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
                 transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto z-10 my-auto"
+                className="relative w-full max-w-2xl bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto z-10 my-auto text-[var(--text-primary)]"
               >
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedBook(null)}
-                  className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full border border-slate-200 hover:border-slate-400 bg-slate-50 hover:bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-all cursor-pointer"
+                  className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full border border-[var(--border-card)] hover:border-[var(--text-muted)] bg-[var(--bg-card-inner)] hover:bg-[var(--bg-card-hover)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
                   title="Close (Esc)"
                 >
                   <X size={15} />
@@ -207,10 +207,10 @@ export default function ReadingSection() {
                     <img 
                       src={selectedBook.cover} 
                       alt={selectedBook.title}
-                      className="w-36 sm:w-44 h-auto rounded-md border border-slate-200 shadow-md"
+                      className="w-36 sm:w-44 h-auto rounded-md border border-[var(--border-card)] shadow-md"
                     />
                     <div className="mt-3 text-center">
-                      <span className="text-[11px] font-mono text-slate-500">
+                      <span className="text-[11px] font-mono text-[var(--text-muted)]">
                         {selectedBook.publisher}
                       </span>
                     </div>
@@ -221,45 +221,45 @@ export default function ReadingSection() {
                     {/* Status */}
                     <div className="mb-2">
                       {selectedBook.statusType === 'reading' ? (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-emerald-50 text-emerald-600 border border-emerald-200">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                           <span>Currently reading</span>
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-slate-100 text-slate-700 border border-slate-200">
-                          <Check size={11} className="text-indigo-600" />
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-[var(--bg-card-inner)] text-[var(--text-secondary)] border border-[var(--border-card)]">
+                          <Check size={11} className="text-[var(--accent)]" />
                           <span>Finished &amp; Highly Recommended</span>
                         </span>
                       )}
                     </div>
 
                     {/* Title & Author */}
-                    <h3 className="font-bold text-xl sm:text-2xl text-slate-900 leading-snug">
+                    <h3 className="font-bold text-xl sm:text-2xl text-[var(--text-primary)] leading-snug">
                       {selectedBook.fullTitle}
                     </h3>
-                    <p className="text-xs font-mono text-indigo-600 font-semibold mt-1 mb-4">
+                    <p className="text-xs font-mono text-[var(--accent)] font-semibold mt-1 mb-4">
                       by {selectedBook.author}
                     </p>
 
                     {/* Why Reading Section */}
                     <div className="mb-5">
-                      <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold mb-1.5">
+                      <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold mb-1.5">
                         Why I picked this up:
                       </h4>
-                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                         {selectedBook.whyReading}
                       </p>
                     </div>
 
                     {/* Key Takeaways */}
                     <div className="mb-5">
-                      <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold mb-2">
+                      <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold mb-2">
                         Key Takeaways &amp; Learnings:
                       </h4>
                       <ul className="space-y-2">
                         {selectedBook.takeaways.map((point, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                            <span className="text-indigo-600 font-mono text-sm mt-0.5">•</span>
+                          <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                            <span className="text-[var(--accent)] font-mono text-sm mt-0.5">•</span>
                             <span>{point}</span>
                           </li>
                         ))}
@@ -272,7 +272,7 @@ export default function ReadingSection() {
                         {selectedBook.topics.map((t, i) => (
                           <span 
                             key={i} 
-                            className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200"
+                            className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[var(--bg-card-inner)] text-[var(--text-secondary)] border border-[var(--border-card)]"
                           >
                             {t}
                           </span>

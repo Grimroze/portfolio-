@@ -20,7 +20,7 @@ const dlProjects = [
     category: "Generative AI",
     desc: "Deep Convolutional GAN for synthetic image generation with adversarial loss balancing and transposed convolution generators.",
     folder: "DCGAN",
-    badgeColor: "text-rose-600 bg-rose-50 border-rose-200"
+    badgeColor: "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800/40"
   },
   {
     id: "plant-disease",
@@ -28,7 +28,7 @@ const dlProjects = [
     category: "AgriTech Vision",
     desc: "Agricultural computer vision pipeline detecting and classifying crop leaf diseases to prevent harvest loss.",
     folder: "PlantDisease",
-    badgeColor: "text-emerald-600 bg-emerald-50 border-emerald-200"
+    badgeColor: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/40"
   },
   {
     id: "face-mask",
@@ -36,7 +36,7 @@ const dlProjects = [
     category: "Edge Vision",
     desc: "Real-time safety and public health vision model identifying face mask adherence from video frames.",
     folder: "Face_mask_detection",
-    badgeColor: "text-sky-600 bg-sky-50 border-sky-200"
+    badgeColor: "text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/40 border-sky-200 dark:border-sky-800/40"
   },
   {
     id: "cifar-10",
@@ -44,7 +44,7 @@ const dlProjects = [
     category: "CNN Benchmark",
     desc: "10-class image classification engine comparing network depths, batch normalization, and dropout regularization.",
     folder: "CIFAR-10",
-    badgeColor: "text-indigo-600 bg-indigo-50 border-indigo-200"
+    badgeColor: "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-800/40"
   },
   {
     id: "breast-cancer",
@@ -52,7 +52,7 @@ const dlProjects = [
     category: "Medical AI",
     desc: "Diagnostic neural network classifying malignant vs. benign tumors with high precision on the Wisconsin dataset.",
     folder: "Breast_Cancer",
-    badgeColor: "text-purple-600 bg-purple-50 border-purple-200"
+    badgeColor: "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800/40"
   },
   {
     id: "dogs-cats",
@@ -60,7 +60,7 @@ const dlProjects = [
     category: "Transfer Learning",
     desc: "Binary convolutional classification model utilizing data augmentation, regularization, and feature maps.",
     folder: "DogVSCats",
-    badgeColor: "text-amber-600 bg-amber-50 border-amber-200"
+    badgeColor: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800/40"
   },
   {
     id: "image-processing",
@@ -68,7 +68,7 @@ const dlProjects = [
     category: "Core CV",
     desc: "Foundational spatial filtering, 2D convolution kernels, edge detection operators, and morphological transformations.",
     folder: "IMAGE_PROCESSING",
-    badgeColor: "text-teal-600 bg-teal-50 border-teal-200"
+    badgeColor: "text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/40 border-teal-200 dark:border-teal-800/40"
   },
   {
     id: "mnist",
@@ -76,7 +76,7 @@ const dlProjects = [
     category: "Foundations",
     desc: "Classic feedforward neural network pipeline with forward-propagation, cross-entropy loss, and handwritten digit inference.",
     folder: "MNIST",
-    badgeColor: "text-blue-600 bg-blue-50 border-blue-200"
+    badgeColor: "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/40"
   },
   {
     id: "research-papers",
@@ -84,7 +84,7 @@ const dlProjects = [
     category: "Deep Literature",
     desc: "Paper dissection notes, architectural summaries, and reproductions of landmark deep learning publications.",
     folder: "Research%20papers",
-    badgeColor: "text-fuchsia-600 bg-fuchsia-50 border-fuchsia-200"
+    badgeColor: "text-fuchsia-600 dark:text-fuchsia-400 bg-fuchsia-50 dark:bg-fuchsia-950/40 border-fuchsia-200 dark:border-fuchsia-800/40"
   }
 ];
 

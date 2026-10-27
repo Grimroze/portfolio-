@@ -1,8 +1,15 @@
 import AbstractBackground from './components/AbstractBackground';
 import ReadingSection from './components/ReadingSection';
-import PacmanRunner from './components/PacmanRunner';
 import Preloader from './components/Preloader';
 import DeepLearningVault from './components/DeepLearningVault';
+import ResumeModal from './components/ResumeModal';
+import MinimalNav from './components/layout/MinimalNav';
+import ModernHero from './components/sections/ModernHero';
+import ModernAbout from './components/sections/ModernAbout';
+import ModernConnect from './components/sections/ModernConnect';
+import VesperArchitectureShowcase from './components/sections/VesperArchitectureShowcase';
+import FluidWordSwitch from './components/shared/FluidWordSwitch';
+import DarkQuantumCursor from './components/shared/DarkQuantumCursor';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
@@ -14,7 +21,7 @@ import {
   CornerDownRight, CheckCircle2, Flame, ArrowRight,
   Play, Pause, RotateCcw, RefreshCw, AlertTriangle, Monitor, Globe, Radio,
   Sliders, ArrowDownRight, CircuitBoard, Sun, Moon,
-  FileCode2, CheckCircle, Award
+  FileCode2, CheckCircle, Award, FileText, Download
 } from 'lucide-react';
 
 // CRISP BRAND SVG ICONS
@@ -174,33 +181,76 @@ const DataSpellOfficialIcon = ({ className = "w-5 h-5" }) => (
   </svg>
 );
 
-const LangChainIcon = ({ className = "w-5 h-5" }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+// AUTHENTIC BRAND ICONS FOR NEURAL COSMOS & ENGINEERING STACK
+const LangGraphOfficialIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none">
+    <circle cx="6" cy="6" r="3" fill="#042F2E" stroke="#2DD4BF" strokeWidth="2"/>
+    <circle cx="18" cy="6" r="3" fill="#042F2E" stroke="#2DD4BF" strokeWidth="2"/>
+    <circle cx="12" cy="18" r="3.5" fill="#2DD4BF"/>
+    <path d="M8.5 7.5L10.5 15" stroke="#2DD4BF" strokeWidth="1.8" strokeLinecap="round"/>
+    <path d="M15.5 7.5L13.5 15" stroke="#2DD4BF" strokeWidth="1.8" strokeLinecap="round"/>
+    <path d="M9 6H15" stroke="#2DD4BF" strokeWidth="1.5" strokeDasharray="2 2"/>
   </svg>
 );
+const LangChainIcon = LangGraphOfficialIcon;
 
-const OllamaIcon = ({ className = "w-5 h-5" }) => (
+const OllamaOfficialIcon = ({ className = "w-5 h-5" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <circle cx="9" cy="9" r="1.5" />
-    <circle cx="15" cy="9" r="1.5" />
-    <path d="M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H6zm6 9a4 4 0 0 1-4-4h2a2 2 0 0 0 4 0h2a4 4 0 0 1-4 4z" />
+    <path d="M9 3C7.9 3 7 3.9 7 5V9.5C6.4 9.8 6 10.4 6 11V15C6 16.1 6.9 17 8 17H8.5V20C8.5 20.6 8.9 21 9.5 21H10.5C11.1 21 11.5 20.6 11.5 20V17H13.5V20C13.5 20.6 13.9 21 14.5 21H15.5C16.1 21 16.5 20.6 16.5 20V17H17C18.1 17 19 16.1 19 15V11C19 10.4 18.6 9.8 18 9.5V7C18 5.9 17.1 5 16 5V4C16 3.4 15.6 3 15 3C14.4 3 14 3.4 14 4V5H11V4C11 3.4 10.6 3 10 3C9.4 3 9 3.4 9 4V3ZM9 7C9.6 7 10 7.4 10 8C10 8.6 9.6 9 9 9C8.4 9 8 8.6 8 8C8 7.4 8.4 7 9 7ZM15 7C15.6 7 16 7.4 16 8C16 8.6 15.6 9 15 9C14.4 9 14 8.6 14 8C14 7.4 14.4 7 15 7Z"/>
+  </svg>
+);
+const OllamaIcon = OllamaOfficialIcon;
+
+const ChromaOfficialIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 100 100" fill="none">
+    <circle cx="30" cy="35" r="18" fill="#F87171" />
+    <circle cx="70" cy="35" r="18" fill="#FBBF24" />
+    <circle cx="30" cy="65" r="18" fill="#60A5FA" />
+    <circle cx="70" cy="65" r="18" fill="#34D399" />
+    <circle cx="50" cy="50" r="12" fill="#A78BFA" />
+  </svg>
+);
+const ChromaVectorIcon = ChromaOfficialIcon;
+
+const RedisOfficialIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none">
+    <path d="M1.5 8.5L12 3L22.5 8.5L12 14L1.5 8.5Z" fill="#DC382D"/>
+    <path d="M1.5 8.5L12 14V21L1.5 15.5V8.5Z" fill="#B7271D"/>
+    <path d="M22.5 8.5L12 14V21L22.5 15.5V8.5Z" fill="#921812"/>
+    <path d="M12 5.5L18 8.5L12 11.5L6 8.5L12 5.5Z" fill="#FFFFFF" fillOpacity="0.3"/>
+    <circle cx="12" cy="8.5" r="1.5" fill="#FFFFFF"/>
   </svg>
 );
 
-const ChromaVectorIcon = ({ className = "w-5 h-5" }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polygon points="12 2 2 7 12 12 22 7 12 2" />
-    <polyline points="2 17 12 22 22 17" />
-    <polyline points="2 12 12 17 22 12" />
+const DeepEvalOfficialIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none">
+    <rect width="24" height="24" rx="6" fill="#0F172A"/>
+    <path d="M7 12L10.5 15.5L17 9" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 3V5M12 19V21M3 12H5M19 12H21" stroke="#38BDF8" strokeWidth="1.8" strokeLinecap="round"/>
+  </svg>
+);
+
+const LangSmithOfficialIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="9" stroke="#EAB308" strokeWidth="2"/>
+    <path d="M12 6V12L16 14" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="12" cy="12" r="2.5" fill="#EAB308"/>
+    <path d="M8 8L16 16M16 8L8 16" stroke="#CA8A04" strokeWidth="1" strokeOpacity="0.4"/>
+  </svg>
+);
+
+const PydanticOfficialIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none">
+    <rect width="24" height="24" rx="6" fill="#E92063"/>
+    <path d="M7 6H13.5C15.9853 6 18 8.01472 18 10.5C18 12.9853 15.9853 15 13.5 15H10.5V18.5H7V6Z" fill="#FFFFFF"/>
+    <circle cx="11.5" cy="10.5" r="2" fill="#E92063"/>
   </svg>
 );
 
 const SafetyShieldIcon = ({ className = "w-5 h-5" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    <path d="m9 12 2 2 4-4" />
+    <path d="m9 12 2 2 4-4" stroke="#10B981" />
   </svg>
 );
 
@@ -237,9 +287,11 @@ const TypingWord = ({ word = "systems", start = true }) => {
 
   useEffect(() => {
     if (!start) return;
+    setText("");
+    setIsDone(false);
 
     let intervalId;
-    // Wait 350ms after preloader finishes fading out so user witnesses the typing sequence
+    // Wait 250ms so user witnesses the typing sequence
     const delayTimer = setTimeout(() => {
       let i = 0;
       intervalId = setInterval(() => {
@@ -249,8 +301,8 @@ const TypingWord = ({ word = "systems", start = true }) => {
           clearInterval(intervalId);
           setTimeout(() => setIsDone(true), 250);
         }
-      }, 85);
-    }, 350);
+      }, 75);
+    }, 250);
 
     return () => {
       clearTimeout(delayTimer);
@@ -275,20 +327,34 @@ const TypingWord = ({ word = "systems", start = true }) => {
 };
 
 // Top Bar Animated Credential Ticker
-const AnimatedTopIdentity = () => {
-  const credentials = [
+const AnimatedTopIdentity = ({ theme = 'dark' }) => {
+  const darkCredentials = [
+    "AUTONOMOUS AI SWARMS",
+    "STANFORD DeLM PROTOCOL",
+    "DISTRIBUTED CONSENSUS",
+    "LEETCODE KNIGHT 1900+",
+    "DTU CSE '27"
+  ];
+  const lightCredentials = [
     "DTU B.TECH CSE '27",
+    "FIRST PRINCIPLES SYSTEMS",
     "AUTONOMOUS AI AGENTS",
-    "DECENTRALIZED SWARMS",
     "LEETCODE KNIGHT 1900+",
     "DISTRIBUTED SYSTEMS"
   ];
+  const credentials = theme === 'dark' ? darkCredentials : lightCredentials;
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const current = credentials[index];
+    setIndex(0);
+    setDisplayText('');
+    setIsDeleting(false);
+  }, [theme]);
+
+  useEffect(() => {
+    const current = credentials[index % credentials.length];
     let timer;
 
     if (!isDeleting && displayText.length < current.length) {
@@ -307,7 +373,7 @@ const AnimatedTopIdentity = () => {
     }
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index]);
+  }, [displayText, isDeleting, index, credentials]);
 
   return (
     <div className="flex items-center gap-2 font-mono text-xs">
@@ -972,39 +1038,131 @@ const LeetCodeAnalyticsCard = () => {
 // Projects Data
 const projects = [
   {
-    id: 'autodata',
+    id: 'aegisgateway',
     number: '01',
+    title: 'AegisGateway',
+    tagline: 'Resilient Distributed LLM Reverse Proxy & Gateway',
+    research: 'High-Throughput Semantic Caching & Fault-Tolerant Circuit Breakers',
+    category: 'Distributed Systems & GenAI Infrastructure',
+    pipeline: [
+      { name: 'FastAPI Ingress & Auth', desc: 'Tiered client API validation with async request pipelining' },
+      { name: 'Redis ZSET Rate Limiter', desc: 'Sliding-window algorithm enforcing 10,000 req/min smoothly' },
+      { name: 'BGE Semantic Caching', desc: 'Dense embedding cosine lookup with 14ms p95 latency on hits' },
+      { name: 'Redis Circuit Breaker', desc: 'Automated failover from primary Llama 3.1 8B to fallback Gemma 2 9B' }
+    ],
+    desc: 'Enterprise-grade LLM reverse proxy in FastAPI. Cuts mean token-wait latency by 35% through Redis ZSET sliding-window rate limiting, BGE semantic caching (14ms p95), and automated circuit breaker failover.',
+    highlights: [
+      { label: 'Cache Latency', value: '14ms p95 Latency' },
+      { label: 'Cost Savings', value: '40% Upstream Reduction' },
+      { label: 'Rate Limiting', value: '10k req/min Sliding Window' },
+      { label: 'Token Latency', value: '35% Latency Reduction' }
+    ],
+    technicalDeepDive: [
+      'Architected an enterprise-grade LLM reverse proxy in FastAPI, reducing mean token-wait latency by 35% through Redis ZSET sliding-window rate limiting (10,000 req/min) and tiered client API key validation.',
+      'Implemented Redis-based Semantic Caching using BGE embeddings, achieving 14ms p95 latency on cache hits and reducing upstream LLM inference costs by 40% for redundant queries.',
+      'Engineered a Redis-backed Circuit Breaker pattern with automated failover from primary (Llama 3.1 8B) to fallback (Gemma 2 9B), preventing cascading failures during upstream API outages.',
+      'Containerized with Docker Compose microservices topology orchestrating FastAPI workers, Redis clusters, and health checks.'
+    ],
+    tags: ['FastAPI', 'Redis (ZSET/Hashes)', 'Docker', 'BGE Embeddings', 'Pydantic v2', 'Microservices'],
+    github: 'https://github.com/Grimroze/AegisGateway',
+    demo: null,
+    badgeText: 'Flagship Systems'
+  },
+  {
+    id: 'specurag',
+    number: '02',
+    title: 'SpecuRAG',
+    tagline: 'ICLR 2025 Speculative RAG Engine (3B Drafter + 8B Verifier)',
+    research: 'Google DeepMind & UC San Diego (ICLR 2025 Lineage)',
+    category: 'Speculative GenAI Systems',
+    pipeline: [
+      { name: 'Hybrid RRF Retrieval', desc: 'Combines dense semantic vectors with BM25 keyword frequency' },
+      { name: 'Inverted Modulo Snake', desc: 'Stratifies K-Means clusters to eliminate super-draft skew' },
+      { name: 'Parallel 3B Drafters', desc: 'Llama-3.2-3B models generate Rationale (β) → Answer (α)' },
+      { name: 'Context-Free 8B Verifier', desc: 'Llama-3.1-8B scores self-consistency & support in ~200 tokens' }
+    ],
+    desc: 'Modular, asynchronous implementation of Speculative RAG. Decouples drafting from verification to eliminate long-context prompt bloat and lost-in-the-middle position bias.',
+    highlights: [
+      { label: 'Paper Lineage', value: 'ICLR 2025 Architecture' },
+      { label: 'Latency Cut', value: '30% Faster Generation' },
+      { label: 'Pipeline Scale', value: '3B Drafters + 8B Verifier' },
+      { label: 'Search Strategy', value: 'Hybrid Dense + BM25 (RRF)' }
+    ],
+    technicalDeepDive: [
+      'Designed and benchmarked a multi-agent Speculative RAG pipeline (ICLR 2025) featuring a 3B Drafter LLM and an 8B Verifier LLM, cutting generation latency by 30% while retaining high verification accuracy.',
+      'Implemented a Hybrid RRF (Reciprocal Rank Fusion) retrieval engine over dense vector embeddings (BGE) and BM25 sparse lexical tokens in ChromaDB, improving retrieval MRR@10 by 22%.',
+      'Optimized drafter output candidate generation using K-Means document clustering, allowing parallel verification across independent semantic clusters.',
+      'Context-free Verifier scores candidate self-consistency (ρ_SC) and support (ρ_SR) in ~150-250 prompt tokens without reading raw chunks.'
+    ],
+    tags: ['LangGraph', 'LangChain', 'Ollama', 'ChromaDB', 'FastAPI', 'PyTorch'],
+    github: 'https://github.com/Grimroze/slippery-lime',
+    demo: null,
+    badgeText: 'ICLR 2025 Research'
+  },
+  {
+    id: 'vesper',
+    number: '03',
+    title: 'Vesper',
+    tagline: 'Systems Architecture, HLD Flows & Algorithmic Studio',
+    research: '103 Interactive Flows • AI Curriculum • vLLM Paper Deep Dives',
+    category: 'Distributed Systems & Architecture',
+    pipeline: [
+      { name: '103 HLD System Flows', desc: 'Interactive visual models for Protocols, LSM-Trees, and Caching' },
+      { name: 'GenAI & GraphRAG Hub', desc: 'Entity extraction, community summaries, and multi-hop reasoning' },
+      { name: 'vLLM Papers Engine', desc: 'Deep dive into PagedAttention KV-cache virtual memory management' },
+      { name: '14 DSA Master Patterns', desc: 'Algorithmic mental models with clean syntax highlighting and complexity' }
+    ],
+    desc: 'A clean, focused systems engineering workspace featuring 103 high-resolution interactive system design flows, an 8-phase AI systems roadmap, and vLLM research paper breakdowns.',
+    highlights: [
+      { label: 'Visual Catalog', value: '103 System Design Flows' },
+      { label: 'Curriculum', value: '8-Phase AI Systems Roadmap' },
+      { label: 'Research Deep Dive', value: 'vLLM PagedAttention Notes' },
+      { label: 'Algorithmic Mastery', value: '14 Master DSA Patterns' }
+    ],
+    technicalDeepDive: [
+      'Interactive SVG Architecture Canvas with category filters, dynamic zoom, and high-resolution rendering.',
+      'Structured systems curriculum spanning mathematical foundations, transformer architectures, agentic loops, and scalable inference.',
+      'Pattern-driven algorithmic revision engine featuring syntax highlighting, complexity analysis, and implementation mental models.',
+      'Deployed on Vercel with zero-latency instant category navigation and mobile responsiveness.'
+    ],
+    tags: ['React', 'TypeScript', 'TailwindCSS', 'Distributed Systems', 'Vercel'],
+    github: 'https://github.com/Grimroze/vesper',
+    demo: null,
+    badgeText: 'Live Studio'
+  },
+  {
+    id: 'autodata',
+    number: '04',
     title: 'AutoData',
     tagline: 'Adversarial Multi-Agent QA Dataset Engine',
     research: 'Meta FAIR "Autodata" Paper Lineage',
     category: 'Autonomous Multi-Agent AI',
     pipeline: [
       { name: 'Challenger Node', desc: 'Synthesizes adversarial edge questions from source corpora' },
-      { name: 'Weak-Strong Loop', desc: 'Quantifies capability divergence (Llama 3.1 vs Gemma 4)' },
-      { name: 'CRAG Context Evaluator', desc: 'Filters hallucinated context vectors before query synthesis' },
-      { name: 'Judge Verdict', desc: '5-cycle difficulty loop terminating on consensus score' }
+      { name: 'Weak-Strong Loop', desc: 'Quantifies capability divergence (Llama 3.1 8B vs Gemma 2 27B)' },
+      { name: 'CRAG Context Evaluator', desc: 'DeepEval + G-Eval framework filters hallucinated context vectors' },
+      { name: 'Judge Verdict', desc: '88% dataset validity across 5-cycle difficulty loop with LangSmith tracing' }
     ],
-    desc: 'Autonomous multi-agent pipeline generating complex multi-hop reasoning QA datasets for LLM fine-tuning without human annotation bottlenecks.',
+    desc: 'Autonomous multi-agent pipeline generating complex multi-hop reasoning QA datasets for LLM fine-tuning without human annotation bottlenecks. Implements Weak-to-Strong evaluation and CRAG with DeepEval & G-Eval.',
     highlights: [
-      { label: 'Evaluation Gap', value: '20+ pt delta (Weak vs Strong)' },
+      { label: 'Evaluation Gap', value: '20+ pt capability gap' },
+      { label: 'Validity Rate', value: '88% Dataset Validity' },
       { label: 'Refinement', value: '5-Cycle Difficulty Scaling' },
-      { label: 'Observability', value: 'Full LangSmith Node Tracing' },
-      { label: 'Dataset Quality', value: 'Zero Semantic Leakage' }
+      { label: 'Observability', value: 'Full LangSmith Tracing' }
     ],
     technicalDeepDive: [
-      'Pioneered an adversarial Challenger-Solver-Judge LangGraph topology inspired by Meta FAIR research.',
-      'Implemented Corrective RAG (CRAG) evaluating context relevancy before generating multi-hop questions.',
-      'Constructed automated rubric scoring rejecting hallucinated reasoning paths before dataset ingestion.',
-      'Integrated deterministic state transitions with checkpoint persistence across evaluation batches.'
+      'Built an autonomous multi-agent pipeline generating complex multi-hop reasoning QA datasets for LLM fine-tuning, inspired by Meta FAIR\'s Autodata paper.',
+      'Implemented a Weak-to-Strong evaluation loop pitting Llama 3.1 8B against Gemma 2 27B, creating challenging edge-case datasets with measurable 20+ point capability gaps.',
+      'Integrated Corrective RAG (CRAG) with DeepEval and G-Eval frameworks, achieving 88% dataset validity across 5-cycle iterative difficulty scaling with end-to-end LangSmith tracing.'
     ],
-    tags: ['LangGraph', 'Ollama', 'ChromaDB', 'LangSmith', 'Python'],
+    tags: ['LangGraph', 'LangChain', 'DeepEval', 'G-Eval', 'Ollama', 'LangSmith'],
     github: 'https://github.com/Grimroze/AutoData',
     demo: null,
     badgeText: 'Meta FAIR Research'
   },
   {
     id: 'decmas',
-    number: '02',
+    number: '05',
     title: 'decmas',
     tagline: 'Decentralized Multi-Agent Execution Framework',
     research: 'Stanford DeLM Research Lineage • Published on PyPI',
@@ -1012,30 +1170,29 @@ const projects = [
     pipeline: [
       { name: 'Dynamic Task Graph', desc: 'Orchestrator breaks complex goal into DAG subtasks' },
       { name: 'Thread-Locked Queue', desc: 'Workers concurrently claim tasks with race-condition safety' },
-      { name: 'Parallel Worker Swarm', desc: 'Autonomous thread execution over LangChain core' },
+      { name: 'Parallel Worker Swarm', desc: 'Autonomous thread execution cutting completion time by 45%' },
       { name: 'LLM-as-a-Verifier', desc: 'Validates proposed updates before global memory commit' }
     ],
-    desc: 'Published open-source Python framework eliminating traditional single-router agent bottlenecks through peer-to-peer asynchronous task claims.',
+    desc: 'Published open-source Python framework eliminating traditional single-router agent bottlenecks through peer-to-peer asynchronous task claims (pip install decmas).',
     highlights: [
       { label: 'PyPI Release', value: 'v0.1.1 Active Package' },
-      { label: 'API Savings', value: '~50% Reduction in Redundant Calls' },
-      { label: 'Concurrency', value: 'Thread-Safe Asynchronous Execution' },
-      { label: 'Architecture', value: 'Decentralized Peer Queue' }
+      { label: 'Completion Time', value: '45% Faster Runtime' },
+      { label: 'API Savings', value: '~50% Cost Reduction' },
+      { label: 'Concurrency', value: '0 Race Conditions' }
     ],
     technicalDeepDive: [
-      'Engineered an Asynchronous Task Queue using explicit thread locks to prevent race conditions across parallel agents.',
-      'Constructed a Verified Shared Context protocol where an LLM-as-a-Verifier checks proposed state claims before global memory admission.',
-      'Completely bypasses standard centralized router bottlenecks, allowing scalable swarm execution without cascading failures.',
-      'Published on PyPI with native support for Groq, Ollama, OpenAI, and Anthropic LLM runtimes.'
+      'Architected and published an open-source Python package on PyPI (pip install decmas) inspired by Stanford\'s DeLM research, mitigating traditional router-agent bottlenecks.',
+      'Engineered a thread-locked asynchronous task queue enabling parallel agent execution without race conditions, reducing workflow completion time by 45%.',
+      'Implemented LLM-as-a-Verifier for shared context validation across sub-agents, cutting hallucination cascades and reducing redundant API costs by ~50%.'
     ],
-    tags: ['PyPI (v0.1.1)', 'LangChain Core', 'Threading', 'Pydantic'],
+    tags: ['pip install decmas', 'PyPI (v0.1.1)', 'Python', 'LangChain', 'Pydantic', 'Threading'],
     github: 'https://github.com/Grimroze/decmas',
     demo: 'https://pypi.org/project/decmas/',
     badgeText: 'PyPI Package v0.1.1'
   },
   {
     id: 'promptarena',
-    number: '03',
+    number: '05',
     title: 'PromptArena',
     tagline: 'Comparative Prompt Evaluation & Safety Platform',
     research: '8-Node LangGraph State Machine Architecture',
@@ -1066,7 +1223,7 @@ const projects = [
   },
   {
     id: 'queryopt',
-    number: '04',
+    number: '06',
     title: 'QueryOpt',
     tagline: 'Local-First PostgreSQL LLM Query Diagnosis Engine',
     research: 'Database Systems & EXPLAIN Execution Analysis',
@@ -1098,90 +1255,93 @@ const projects = [
 ];
 
 const techStack = [
-  { name: 'Python 3.12', category: 'Core Language', icon: PythonOfficialIcon, desc: 'Asyncio event loops, multiprocessing, GIL navigation, scientific computing & ML' },
-  { name: 'Modern C++ (C++20)', category: 'Core Systems', icon: CppOfficialIcon, desc: 'Zero-cost abstractions, RAII, memory pointers, thread synchronization & high-speed I/O' },
+  { name: 'Python 3.12', category: 'Core Language', icon: PythonOfficialIcon, desc: 'Asyncio event loops, multiprocessing, GIL navigation, scientific computing & ML systems' },
+  { name: 'Modern C++ (C++20)', category: 'Core Systems', icon: CppOfficialIcon, desc: 'Zero-cost abstractions, RAII, low-level pointers, high-speed algorithmic I/O' },
+  { name: 'PostgreSQL & Supabase', category: 'Databases', icon: PostgresOfficialIcon, desc: 'ACID transactions, EXPLAIN plan index tuning, JSONB storage & agent state checkpointing' },
+  { name: 'Redis (ZSET & Hashes)', category: 'In-Memory Systems', icon: RedisOfficialIcon, desc: 'Sliding-window rate limiter (10k req/min), BGE semantic caching (14ms p95), circuit breaker' },
+  { name: 'FastAPI & AsyncIO', category: 'Backend Systems', icon: FastAPIOfficialIcon, desc: 'High-concurrency async endpoints, tiered API auth, SSE event streaming, Pydantic v2 schemas' },
+  { name: 'Docker & Microservices', category: 'Infrastructure', icon: DockerOfficialIcon, desc: 'Thread locks, race condition containment, isolated multi-agent container swarms' },
   { name: 'PyTorch & Transformers', category: 'Deep Learning', icon: PyTorchOfficialIcon, desc: 'Autograd dynamic compute graphs, CUDA tensor acceleration & Hugging Face fine-tuning' },
-  { name: 'LangGraph & LangChain', category: 'Multi-Agent AI', icon: LangChainIcon, desc: 'Cyclic state machines, checkpoint persistence, supervisor routing & conditional DAGs' },
-  { name: 'OpenAI GPT-4o API', category: 'Frontier AI', icon: OpenAIOfficialIcon, desc: 'Structured JSON schemas, function calling, complex synthesis & tool orchestration' },
+  { name: 'Local LLMs (Ollama)', category: 'Edge Inference', icon: OllamaOfficialIcon, desc: 'Quantized Llama 3.1 8B, Gemma 2 9B/27B, edge inference (4-bit/8-bit) & weak-to-strong reasoning' },
+  { name: 'LangGraph & LangChain', category: 'Multi-Agent AI', icon: LangGraphOfficialIcon, desc: 'Cyclic state machines, checkpoint persistence, supervisor routing & conditional multi-agent DAGs' },
+  { name: 'ChromaDB & FAISS', category: 'Vector Search', icon: ChromaOfficialIcon, desc: 'Hybrid RRF retrieval (Dense BGE + BM25), document clustering, sub-15ms vector similarity' },
   { name: 'Claude 3.5 Sonnet', category: 'Frontier AI', icon: ClaudeOfficialIcon, desc: 'Architectural reasoning, multi-turn code synthesis & precision system prompt adherence' },
-  { name: 'Google Gemini 1.5 Pro', category: 'Frontier AI', icon: GeminiOfficialIcon, desc: '2M massive token context window, multimodal cross-modal reasoning & deep document retrieval' },
-  { name: 'Local LLMs (Ollama)', category: 'Edge Inference', icon: OllamaIcon, desc: 'Llama 3.1, Gemma 4, quantized edge inference (4-bit/8-bit) & weak-strong eval' },
-  { name: 'Corrective RAG & Chroma', category: 'Vector Search', icon: ChromaVectorIcon, desc: 'ChromaDB, FAISS, hybrid dense/sparse retrieval & self-corrective query grading' },
-  { name: 'FastAPI & AsyncIO', category: 'Backend Systems', icon: FastAPIOfficialIcon, desc: 'High-concurrency async endpoints, SSE event streaming, Pydantic v2 schemas' },
-  { name: 'Docker & Concurrency', category: 'Infrastructure', icon: DockerOfficialIcon, desc: 'Thread locks, race condition containment & reproducible container swarms' },
-  { name: 'PostgreSQL & Supabase', category: 'Databases', icon: PostgresOfficialIcon, desc: 'ACID transactions, EXPLAIN plan tuning, JSONB storage & agent state checkpointing' },
-  { name: 'AI Safety & Guardrails', category: 'AI Alignment', icon: SafetyShieldIcon, desc: 'NeMo guardrails, LLM-as-a-Verifier, regex PII sanitization & jailbreak containment' },
-  { name: 'JetBrains DataSpell', category: 'ML Workspace', icon: DataSpellOfficialIcon, desc: 'Exploratory data analysis, interactive Jupyter notebooks, dataset profiling & visualization' },
-  { name: 'JetBrains PyCharm Pro', category: 'Production IDE', icon: PyCharmOfficialIcon, desc: 'Deep Python debugging, profiling, virtualenv management & remote cluster sync' },
+  { name: 'OpenAI GPT-4o API', category: 'Frontier AI', icon: OpenAIOfficialIcon, desc: 'Structured JSON schemas, function calling, complex synthesis & tool orchestration' },
+  { name: 'DeepEval & G-Eval', category: 'Model Evaluation', icon: DeepEvalOfficialIcon, desc: 'Adversarial benchmark validation, RLHF alignment metrics, 88% dataset validity, hallucination detection' },
+  { name: 'LangSmith Observability', category: 'Agent Telemetry', icon: LangSmithOfficialIcon, desc: 'End-to-end multi-agent node tracing, latency profiling, token metrics & dataset curation' },
+  { name: 'Pydantic v2', category: 'Data Validation', icon: PydanticOfficialIcon, desc: 'Rust-backed schema parsing, strict type enforcement, deterministic agent JSON outputs' },
+  { name: 'AI Safety & Guardrails', category: 'AI Alignment', icon: SafetyShieldIcon, desc: 'NeMo guardrails, LLM-as-a-Verifier, regex PII sanitization & prompt injection containment' },
 ];
 
-// DEEP NEURAL SYNAPSE ARCHITECTURE (Pixel-Perfect Center-Aligned Bezier Synapses & 15 Nodes)
+// DEEP NEURAL SYNAPSE ARCHITECTURE (Pixel-Perfect Center-Aligned Bezier Synapses & 16 Nodes)
 const neuralLayers = [
-  { id: 0, label: 'L0 • INPUT & ENVIRONMENT', subtitle: 'IDEs, Python & C++ Core', x: 12 },
-  { id: 1, label: 'L1 • TENSOR & COMPUTE', subtitle: 'Engines & Container Swarms', x: 37 },
-  { id: 2, label: 'L2 • FRONTIER WEIGHTS', subtitle: 'Foundation Cognitive Models', x: 63 },
-  { id: 3, label: 'L3 • AGENTIC OUTPUT', subtitle: 'DAGs, RAG & AI Safety', x: 88 },
+  { id: 0, label: 'L0 • FOUNDATIONS', subtitle: 'Python, C++, SQL & Redis', x: 12 },
+  { id: 1, label: 'L1 • SERVING & RUNTIMES', subtitle: 'FastAPI, Docker, PyTorch & Ollama', x: 37 },
+  { id: 2, label: 'L2 • AGENTS & VECTORS', subtitle: 'LangGraph, ChromaDB, Claude & GPT-4o', x: 63 },
+  { id: 3, label: 'L3 • EVALS & OBSERVABILITY', subtitle: 'DeepEval, LangSmith, Pydantic & Safety', x: 88 },
 ];
 
 const floatingNodesData = [
-  // LAYER 0: Input & Dev Environment (x: 12%) - 5 Nodes
-  { id: 'dataspell', layer: 0, name: 'JetBrains DataSpell', shortName: 'DataSpell', category: 'ML Workspace', icon: DataSpellOfficialIcon, desc: 'Exploratory data analysis, interactive Jupyter notebooks, dataset profiling & pandas visualization', metrics: 'Data Science IDE', x: 12, y: 16, inbound: [], outbound: ['pytorch'] },
-  { id: 'pycharm', layer: 0, name: 'JetBrains PyCharm Pro', shortName: 'PyCharm', category: 'Production IDE', icon: PyCharmOfficialIcon, desc: 'Deep Python runtime debugging, memory profiling, virtualenv management & remote cluster sync', metrics: 'Enterprise Python', x: 12, y: 32, inbound: [], outbound: ['pytorch', 'docker'] },
-  { id: 'python', layer: 0, name: 'Python 3.12 (Core)', shortName: 'Python', category: 'Core Language', icon: PythonOfficialIcon, desc: 'Dynamic typing, asyncio event loops, multiprocessing, GIL navigation & rich deep learning ecosystem', metrics: 'Primary Language', x: 12, y: 48, inbound: [], outbound: ['pytorch', 'fastapi'] },
-  { id: 'cpp', layer: 0, name: 'Modern C++ (C++20)', shortName: 'C++', category: 'Systems Engineering', icon: CppOfficialIcon, desc: 'Low-level memory management, RAII, pointer safety, zero-cost abstractions & algorithmic problem solving', metrics: '1200+ Solved • Fast I/O', x: 12, y: 64, inbound: [], outbound: ['docker', 'fastapi'] },
-  { id: 'postgres', layer: 0, name: 'PostgreSQL & Supabase', shortName: 'PostgreSQL', category: 'Databases', icon: PostgresOfficialIcon, desc: 'ACID transactions, EXPLAIN plan index tuning, JSONB document storage & state checkpoint persistence', metrics: 'ACID Checkpointing', x: 12, y: 80, inbound: [], outbound: ['fastapi'] },
+  // LAYER 0: Core Languages & Storage Foundations (x: 12%) - 4 Nodes
+  { id: 'python', layer: 0, name: 'Python 3.12 (Core)', shortName: 'Python', category: 'Core Language', icon: PythonOfficialIcon, desc: 'Dynamic typing, asyncio event loops, multiprocessing, GIL navigation & rich deep learning ecosystem', metrics: 'Primary Language', x: 12, y: 18, inbound: [], outbound: ['fastapi', 'pytorch'] },
+  { id: 'cpp', layer: 0, name: 'Modern C++ (C++20)', shortName: 'C++20', category: 'Systems Engineering', icon: CppOfficialIcon, desc: 'Low-level memory management, RAII, pointer safety, zero-cost abstractions & algorithmic problem solving', metrics: '1200+ Solved • Fast I/O', x: 12, y: 39, inbound: [], outbound: ['fastapi', 'docker'] },
+  { id: 'postgres', layer: 0, name: 'PostgreSQL & Supabase', shortName: 'PostgreSQL', category: 'Databases', icon: PostgresOfficialIcon, desc: 'ACID transactions, EXPLAIN plan index tuning, JSONB document storage & state checkpoint persistence', metrics: 'ACID Checkpointing', x: 12, y: 60, inbound: [], outbound: ['fastapi', 'docker'] },
+  { id: 'redis', layer: 0, name: 'Redis (ZSET & In-Memory)', shortName: 'Redis', category: 'Distributed Cache', icon: RedisOfficialIcon, desc: 'Sliding-window rate limiter (10,000 req/min), BGE semantic caching (14ms p95), circuit breaker telemetry', metrics: '14ms Semantic Cache', x: 12, y: 81, inbound: [], outbound: ['fastapi', 'ollama'] },
 
-  // LAYER 1: Tensor Compute & Backend Systems (x: 37%) - 3 Nodes
-  { id: 'pytorch', layer: 1, name: 'PyTorch & Transformers', shortName: 'PyTorch', category: 'Deep Learning', icon: PyTorchOfficialIcon, desc: 'Autograd dynamic computation graphs, CUDA acceleration, custom loss functions & Hugging Face fine-tuning', metrics: 'CUDA Distributed Tensors', x: 37, y: 24, inbound: ['dataspell', 'pycharm', 'python'], outbound: ['gpt', 'claude', 'ollama'] },
-  { id: 'docker', layer: 1, name: 'Docker & Concurrency', shortName: 'Docker', category: 'Infrastructure', icon: DockerOfficialIcon, desc: 'Thread locks, race condition elimination, reproducible isolated container swarms & daemon workers', metrics: 'Isolated Swarms', x: 37, y: 50, inbound: ['pycharm', 'cpp'], outbound: ['ollama', 'gemini'] },
-  { id: 'fastapi', layer: 1, name: 'FastAPI & AsyncIO', shortName: 'FastAPI', category: 'Backend Systems', icon: FastAPIOfficialIcon, desc: 'High-concurrency async endpoints, Server-Sent Events (SSE), telemetry streaming & Pydantic v2 schemas', metrics: 'Async Multi-Worker', x: 37, y: 76, inbound: ['python', 'cpp', 'postgres'], outbound: ['gpt', 'claude', 'gemini'] },
+  // LAYER 1: Serving Engines & Local Runtimes (x: 37%) - 4 Nodes
+  { id: 'fastapi', layer: 1, name: 'FastAPI & AsyncIO', shortName: 'FastAPI', category: 'Backend Systems', icon: FastAPIOfficialIcon, desc: 'High-concurrency async reverse proxy, tiered client API auth, SSE telemetry streaming & Pydantic schemas', metrics: 'Async Reverse Proxy', x: 37, y: 18, inbound: ['python', 'cpp', 'postgres', 'redis'], outbound: ['langchain', 'chromadb'] },
+  { id: 'docker', layer: 1, name: 'Docker & Microservices', shortName: 'Docker', category: 'Infrastructure', icon: DockerOfficialIcon, desc: 'Thread locks, race condition elimination, reproducible isolated container swarms & daemon workers', metrics: 'Microservices Swarm', x: 37, y: 39, inbound: ['cpp', 'postgres'], outbound: ['langchain', 'chromadb'] },
+  { id: 'pytorch', layer: 1, name: 'PyTorch & CUDA', shortName: 'PyTorch', category: 'Deep Learning', icon: PyTorchOfficialIcon, desc: 'Autograd dynamic computation graphs, CUDA acceleration, custom loss functions & Hugging Face fine-tuning', metrics: 'CUDA Acceleration', x: 37, y: 60, inbound: ['python'], outbound: ['chromadb', 'claude'] },
+  { id: 'ollama', layer: 1, name: 'Ollama & Local LLMs', shortName: 'Ollama', category: 'Edge Inference', icon: OllamaOfficialIcon, desc: 'Quantized Llama 3.1 8B, Gemma 2 9B/27B, local weak-to-strong reasoning & spec drafting without cloud costs', metrics: 'Quantized 4-bit / 8-bit', x: 37, y: 81, inbound: ['redis'], outbound: ['langchain', 'gpt'] },
 
-  // LAYER 2: Frontier Weights & Foundation Models (x: 63%) - 4 Nodes
-  { id: 'gpt', layer: 2, name: 'OpenAI GPT-4o API', shortName: 'GPT-4o', category: 'Frontier AI', icon: OpenAIOfficialIcon, desc: 'Complex multi-step reasoning, structured JSON schemas, function calling & autonomous tool orchestration', metrics: '128K Context • JSON Schema', x: 63, y: 20, inbound: ['pytorch', 'fastapi'], outbound: ['langchain', 'safety'] },
-  { id: 'claude', layer: 2, name: 'Claude 3.5 Sonnet', shortName: 'Claude 3.5', category: 'Frontier AI', icon: ClaudeOfficialIcon, desc: 'Nuanced architectural design, multi-turn code synthesis, high-precision system prompt adherence', metrics: '200K Context • High Precision', x: 63, y: 40, inbound: ['pytorch', 'fastapi'], outbound: ['langchain', 'safety'] },
-  { id: 'gemini', layer: 2, name: 'Google Gemini 1.5 Pro', shortName: 'Gemini 1.5', category: 'Frontier AI', icon: GeminiOfficialIcon, desc: 'Massive 2M token context window, audio/video multimodal reasoning & deep long-document needle retrieval', metrics: '2M Context • Multimodal', x: 63, y: 60, inbound: ['docker', 'fastapi'], outbound: ['rag', 'safety'] },
-  { id: 'ollama', layer: 2, name: 'Local LLMs (Ollama)', shortName: 'Ollama', category: 'Edge Inference', icon: OllamaIcon, desc: 'Llama 3.1, Gemma 4, quantized edge inference (4-bit/8-bit) & weak-strong local capability evaluation', metrics: 'Quantized 4-bit / 8-bit', x: 63, y: 80, inbound: ['pytorch', 'docker'], outbound: ['rag'] },
+  // LAYER 2: Agentic Orchestration & Vector Search (x: 63%) - 4 Nodes
+  { id: 'langchain', layer: 2, name: 'LangGraph & LangChain', shortName: 'LangGraph', category: 'Multi-Agent AI', icon: LangGraphOfficialIcon, desc: 'Cyclic state machines, checkpoint persistence, supervisor routing, conditional multi-agent DAGs', metrics: 'Cyclic State Machine', x: 63, y: 18, inbound: ['fastapi', 'docker', 'ollama'], outbound: ['deepeval', 'langsmith'] },
+  { id: 'chromadb', layer: 2, name: 'ChromaDB & FAISS', shortName: 'ChromaDB', category: 'Vector Search', icon: ChromaOfficialIcon, desc: 'Hybrid RRF retrieval (Dense BGE + BM25), document clustering, sub-15ms vector similarity lookup', metrics: 'Hybrid RRF Search', x: 63, y: 39, inbound: ['fastapi', 'docker', 'pytorch'], outbound: ['deepeval', 'pydantic'] },
+  { id: 'claude', layer: 2, name: 'Claude 3.5 Sonnet', shortName: 'Claude 3.5', category: 'Frontier AI', icon: ClaudeOfficialIcon, desc: 'Nuanced architectural design, multi-turn code synthesis, high-precision system prompt adherence', metrics: '200K Context Window', x: 63, y: 60, inbound: ['pytorch'], outbound: ['langsmith', 'safety'] },
+  { id: 'gpt', layer: 2, name: 'OpenAI GPT-4o API', shortName: 'GPT-4o', category: 'Frontier AI', icon: OpenAIOfficialIcon, desc: 'Complex multi-step reasoning, structured JSON schemas, function calling & autonomous tool orchestration', metrics: '128K JSON Schema', x: 63, y: 81, inbound: ['ollama'], outbound: ['pydantic', 'safety'] },
 
-  // LAYER 3: Agentic Orchestration & Alignment Output (x: 88%) - 3 Nodes
-  { id: 'langchain', layer: 3, name: 'LangGraph & LangChain', shortName: 'LangGraph', category: 'Multi-Agent AI', icon: LangChainIcon, desc: 'Cyclic state machines, checkpoint persistence, supervisor routing, conditional multi-agent DAGs', metrics: 'Cyclic State Machine', x: 88, y: 24, inbound: ['gpt', 'claude'], outbound: [] },
-  { id: 'rag', layer: 3, name: 'Corrective RAG & Chroma', shortName: 'ChromaDB', category: 'Vector Search', icon: ChromaVectorIcon, desc: 'ChromaDB, FAISS, hybrid dense/sparse vector search, context reranking & self-corrective query grading', metrics: 'Sub-50ms Embeddings', x: 88, y: 50, inbound: ['gemini', 'ollama'], outbound: [] },
-  { id: 'safety', layer: 3, name: 'AI Safety & Guardrails', shortName: 'AI Safety', category: 'AI Alignment', icon: SafetyShieldIcon, desc: 'NeMo guardrails, LLM-as-a-Verifier, regex PII sanitization, prompt injection containment & defense', metrics: 'Zero Jailbreak • NeMo', x: 88, y: 76, inbound: ['gpt', 'claude', 'gemini'], outbound: [] },
+  // LAYER 3: Evals, Observability & Guardrails (x: 88%) - 4 Nodes
+  { id: 'deepeval', layer: 3, name: 'DeepEval & G-Eval', shortName: 'DeepEval', category: 'Model Evaluation', icon: DeepEvalOfficialIcon, desc: 'Adversarial benchmark validation, RLHF alignment metrics, 88% dataset validity & hallucination detection', metrics: 'RLHF Alignment & Evals', x: 88, y: 18, inbound: ['langchain', 'chromadb'], outbound: [] },
+  { id: 'langsmith', layer: 3, name: 'LangSmith Observability', shortName: 'LangSmith', category: 'Agent Telemetry', icon: LangSmithOfficialIcon, desc: 'End-to-end multi-agent node tracing, execution latency profiling, token analytics & dataset curation', metrics: 'E2E Node Tracing', x: 88, y: 39, inbound: ['langchain', 'claude'], outbound: [] },
+  { id: 'pydantic', layer: 3, name: 'Pydantic v2 Schemas', shortName: 'Pydantic', category: 'Data Validation', icon: PydanticOfficialIcon, desc: 'Rust-backed schema validation, strict type enforcement, deterministic agent outputs & config management', metrics: 'Strict Rust Core', x: 88, y: 60, inbound: ['chromadb', 'gpt'], outbound: [] },
+  { id: 'safety', layer: 3, name: 'AI Safety & Verifiers', shortName: 'AI Safety', category: 'AI Alignment', icon: SafetyShieldIcon, desc: 'NeMo guardrails, LLM-as-a-Verifier, regex PII sanitization, prompt injection containment & defense', metrics: 'Zero Jailbreak Defense', x: 88, y: 81, inbound: ['claude', 'gpt'], outbound: [] },
 ];
 
-// Synaptic feed-forward edges connecting layers (23 Synaptic Bridges)
+// Synaptic feed-forward edges connecting layers (24 Balanced Synaptic Bridges)
 const neuralSynapses = [
   // Layer 0 -> Layer 1 (8 connections)
-  { from: 'dataspell', to: 'pytorch' },
-  { from: 'pycharm', to: 'pytorch' },
-  { from: 'pycharm', to: 'docker' },
-  { from: 'python', to: 'pytorch' },
   { from: 'python', to: 'fastapi' },
-  { from: 'cpp', to: 'docker' },
+  { from: 'python', to: 'pytorch' },
   { from: 'cpp', to: 'fastapi' },
+  { from: 'cpp', to: 'docker' },
   { from: 'postgres', to: 'fastapi' },
+  { from: 'postgres', to: 'docker' },
+  { from: 'redis', to: 'fastapi' },
+  { from: 'redis', to: 'ollama' },
 
   // Layer 1 -> Layer 2 (8 connections)
-  { from: 'pytorch', to: 'gpt' },
+  { from: 'fastapi', to: 'langchain' },
+  { from: 'fastapi', to: 'chromadb' },
+  { from: 'docker', to: 'langchain' },
+  { from: 'docker', to: 'chromadb' },
+  { from: 'pytorch', to: 'chromadb' },
   { from: 'pytorch', to: 'claude' },
-  { from: 'pytorch', to: 'ollama' },
-  { from: 'docker', to: 'ollama' },
-  { from: 'docker', to: 'gemini' },
-  { from: 'fastapi', to: 'gpt' },
-  { from: 'fastapi', to: 'claude' },
-  { from: 'fastapi', to: 'gemini' },
+  { from: 'ollama', to: 'langchain' },
+  { from: 'ollama', to: 'gpt' },
 
-  // Layer 2 -> Layer 3 (7 connections)
-  { from: 'gpt', to: 'langchain' },
-  { from: 'claude', to: 'langchain' },
-  { from: 'gemini', to: 'rag' },
-  { from: 'ollama', to: 'rag' },
-  { from: 'gpt', to: 'safety' },
+  // Layer 2 -> Layer 3 (8 connections)
+  { from: 'langchain', to: 'deepeval' },
+  { from: 'langchain', to: 'langsmith' },
+  { from: 'chromadb', to: 'deepeval' },
+  { from: 'chromadb', to: 'pydantic' },
+  { from: 'claude', to: 'langsmith' },
   { from: 'claude', to: 'safety' },
-  { from: 'gemini', to: 'safety' },
+  { from: 'gpt', to: 'pydantic' },
+  { from: 'gpt', to: 'safety' },
 ];
 
 const FloatingTechCosmos = () => {
-  const [activeTech, setActiveTech] = useState(floatingNodesData[2]); // Python default
+  const [activeTech, setActiveTech] = useState(floatingNodesData[0]); // Python default
   const [hoveredId, setHoveredId] = useState(null);
 
   const currentTech = hoveredId 
@@ -1223,9 +1383,9 @@ const FloatingTechCosmos = () => {
           </span>
         </div>
         <div className="flex items-center gap-3 text-[var(--text-muted)] text-[11px]">
-          <span className="text-[var(--text-primary)] font-semibold">15 Neurons</span>
+          <span className="text-[var(--text-primary)] font-semibold">16 Neurons</span>
           <span>•</span>
-          <span className="text-[var(--text-primary)] font-semibold">23 Synaptic Bridges</span>
+          <span className="text-[var(--text-primary)] font-semibold">24 Synaptic Bridges</span>
           <span>•</span>
           <span className="text-[var(--accent)] hidden md:inline font-medium">Continuous Neural Flow • Hover any neuron to isolate pathways</span>
         </div>
@@ -1385,7 +1545,7 @@ const FloatingTechCosmos = () => {
 
         <div className="absolute bottom-3 right-3 bg-[var(--bg-card)]/90 border border-[var(--border-card)] px-3 py-1.5 rounded-xl text-[10px] font-mono text-[var(--text-muted)] flex items-center gap-2 shadow-md pointer-events-none backdrop-blur-md">
           <Activity size={12} className="text-[var(--accent)]" />
-          <span>15 Active Neurons • Live Feed-Forward Synapse Mesh</span>
+          <span>16 Active Neurons • Live Feed-Forward Synapse Mesh</span>
         </div>
       </div>
 
@@ -1452,6 +1612,237 @@ const SpatialArchitectureStudio = ({ projects, activeProject, setActiveProject }
 
   // Topologies for each project with spatial (x, y) coordinates & connections
   const projectTopologies = {
+    aegisgateway: {
+      title: 'AegisGateway: Resilient Distributed LLM Reverse Proxy',
+      tagline: 'Redis ZSET Sliding-Window • 14ms BGE Semantic Caching • Circuit Breaker Failover',
+      hudBadge: 'FastAPI + Redis (10k req/m)',
+      simButtonText: 'Run Gateway Telemetry Trace',
+      nodes: [
+        {
+          id: 'fastapi_ingress',
+          name: 'FastAPI Ingress',
+          category: 'Async Reverse Proxy',
+          icon: Zap,
+          x: 10,
+          y: 50,
+          metric: 'Tiered API Auth',
+          status: 'Healthy',
+          desc: 'High-concurrency async reverse proxy handling client authentication, JWT verification, and request validation.'
+        },
+        {
+          id: 'redis_limiter',
+          name: 'Redis ZSET Limiter',
+          category: 'Sliding-Window Limiter',
+          icon: Activity,
+          x: 32,
+          y: 50,
+          metric: '10,000 req/min',
+          status: 'Healthy',
+          desc: 'Sorted set sliding-window rate limiter enforcing smooth rate limits and tiered client quotas without spikes.'
+        },
+        {
+          id: 'semantic_cache',
+          name: 'BGE Semantic Cache',
+          category: 'Vector Similarity',
+          icon: Database,
+          x: 56,
+          y: 25,
+          metric: '14ms p95 Hit',
+          status: 'Healthy',
+          desc: 'Dense embedding cache matching queries via BGE cosine similarity in Redis, saving 40% upstream inference fees.'
+        },
+        {
+          id: 'circuit_breaker',
+          name: 'Redis Circuit Breaker',
+          category: 'Fault-Tolerant Failover',
+          icon: Shield,
+          x: 56,
+          y: 75,
+          metric: 'Zero Cascades',
+          status: 'Healthy',
+          desc: 'Stateful Redis failure tracker executing automated open/half-open transitions to prevent upstream cascade outages.'
+        },
+        {
+          id: 'model_cluster',
+          name: 'Upstream LLM Cluster',
+          category: 'Llama 3.1 8B → Gemma 2',
+          icon: Cpu,
+          x: 88,
+          y: 50,
+          metric: 'Automated Failover',
+          status: 'Healthy',
+          desc: 'High-speed upstream dispatch to primary Llama-3.1-8B with instant hot-standby fallback to Gemma-2-9B.'
+        }
+      ],
+      cables: [
+        { from: 'fastapi_ingress', to: 'redis_limiter', label: 'Auth Verified' },
+        { from: 'redis_limiter', to: 'semantic_cache', label: 'Query Check' },
+        { from: 'redis_limiter', to: 'circuit_breaker', label: 'Cache Miss / Fallback' },
+        { from: 'semantic_cache', to: 'model_cluster', label: 'Uncached Synthesis' },
+        { from: 'circuit_breaker', to: 'model_cluster', label: 'Failover Routing' }
+      ],
+      steps: [
+        { nodeId: 'fastapi_ingress', log: '[01/04] Ingress: Authenticated Tier-1 client API key with token validation...' },
+        { nodeId: 'redis_limiter', log: '[02/04] Redis ZSET: Enforced sliding window: 142 reqs in window < 10,000 req/min limit. Approved.' },
+        { nodeId: 'semantic_cache', log: '[03/04] BGE Semantic Cache: Cosine similarity 0.942 > threshold. Cache HIT: responded in 13.8ms!' },
+        { nodeId: 'circuit_breaker', log: '[04/04] Circuit Breaker: Primary Llama 3.1 healthy (99.98%); Gemma 2 fallback hot-standby ready.' }
+      ]
+    },
+    specurag: {
+      title: 'SpecuRAG: ICLR 2025 Speculative Retrieval Engine',
+      tagline: 'Decoupled Contextual Drafting (3B) & Verification (8B) • Google DeepMind & UCSD Lineage',
+      hudBadge: 'ICLR 2025 (3B + 8B)',
+      simButtonText: 'Run Speculative RAG Trace',
+      nodes: [
+        {
+          id: 'hybrid_retrieval',
+          name: 'Hybrid RRF Retrieval',
+          category: 'Dense + BM25 Fusion',
+          icon: Database,
+          x: 12,
+          y: 50,
+          metric: 'RRF Score Rank',
+          status: 'Healthy',
+          desc: 'Reciprocal Rank Fusion combining dense semantic vectors with BM25 keyword frequency, eliminating vector keyword blindness.'
+        },
+        {
+          id: 'snake_partitioner',
+          name: 'Snake Partitioner',
+          category: 'K-Means Stratification',
+          icon: Network,
+          x: 34,
+          y: 50,
+          metric: 'Inverted Snake',
+          status: 'Healthy',
+          desc: 'K-Means clustering + Inverted Modulo Snake pairing allocating chunks into balanced subsets without super-draft skew.'
+        },
+        {
+          id: 'drafter_1',
+          name: 'Drafter 1 (Llama-3.2-3B)',
+          category: 'Specialist Drafter',
+          icon: Cpu,
+          x: 58,
+          y: 24,
+          metric: 'Rationale β₁ → α₁',
+          status: 'Healthy',
+          desc: 'Drafts candidate rationale β1 and answer α1 over subset S1 in parallel. Fast, lightweight local inference.'
+        },
+        {
+          id: 'drafter_2',
+          name: 'Drafter 2 (Llama-3.2-3B)',
+          category: 'Specialist Drafter',
+          icon: Cpu,
+          x: 58,
+          y: 76,
+          metric: 'Rationale β₂ → α₂',
+          status: 'Healthy',
+          desc: 'Drafts candidate rationale β2 and answer α2 over subset S2 in parallel without sharing raw chunk bloat.'
+        },
+        {
+          id: 'generalist_verifier',
+          name: 'Generalist Verifier (8B)',
+          category: 'Context-Free Scoring',
+          icon: Shield,
+          x: 86,
+          y: 50,
+          metric: '~200 Prompt Tokens',
+          status: 'Healthy',
+          desc: 'Scores candidate (Q, α, β) self-consistency ρ_SC and support ρ_SR in ~200 prompt tokens without reading raw chunks!'
+        }
+      ],
+      cables: [
+        { from: 'hybrid_retrieval', to: 'snake_partitioner', label: 'RRF Fused Chunks' },
+        { from: 'snake_partitioner', to: 'drafter_1', label: 'Subset S1 (Balanced)' },
+        { from: 'snake_partitioner', to: 'drafter_2', label: 'Subset S2 (Balanced)' },
+        { from: 'drafter_1', to: 'generalist_verifier', label: 'Draft Pair (α₁, β₁)' },
+        { from: 'drafter_2', to: 'generalist_verifier', label: 'Draft Pair (α₂, β₂)' }
+      ],
+      steps: [
+        { nodeId: 'hybrid_retrieval', log: '[01/04] Hybrid RRF: Retrieved top-k chunks with Dense Vector + BM25 score fusion...' },
+        { nodeId: 'snake_partitioner', log: '[02/04] Snake Partitioner: Stratified K-Means clusters into balanced subsets S1 & S2...' },
+        { nodeId: 'drafter_1', log: '[03/04] Drafter 1 (3B): Generated grounded rationale β1 ("1937 < 1948") and draft α1...' },
+        { nodeId: 'drafter_2', log: '[03/04] Drafter 2 (3B): Generated competing candidate rationale β2 and draft α2...' },
+        { nodeId: 'generalist_verifier', log: '[04/04] 8B Verifier: Scored Draft 1 (ρ = 0.612) vs Draft 2 (ρ = 0.045) in 185 tokens. Selected Draft 1!' }
+      ]
+    },
+
+    vesper: {
+      title: 'Vesper: Architecture & Distributed Systems Studio',
+      tagline: '103 Interactive System Flows • AI Curriculum • vLLM Research Deep Dives',
+      hudBadge: 'LIVE ARCHITECTURE STUDIO',
+      simButtonText: 'Explore System Design Matrix',
+      nodes: [
+        {
+          id: 'flows_engine',
+          name: '103 System Flows',
+          category: 'HLD & Storage Internals',
+          icon: Layers,
+          x: 14,
+          y: 50,
+          metric: '103 SVG Flows',
+          status: 'Healthy',
+          desc: 'Interactive visual models for Protocols, LSM-Tree write paths, consistent hashing, distributed transactions, and Raft.'
+        },
+        {
+          id: 'genai_flows',
+          name: 'GenAI & GraphRAG Hub',
+          category: 'Multi-Hop Reasoning',
+          icon: Network,
+          x: 40,
+          y: 24,
+          metric: 'Graph Community',
+          status: 'Healthy',
+          desc: 'Entity extraction, graph community summaries, hybrid dense + graph retrieval, and LLM evaluation benchmarks.'
+        },
+        {
+          id: 'papers_deepdive',
+          name: 'Systems Papers Engine',
+          category: 'vLLM PagedAttention',
+          icon: BookOpen,
+          x: 40,
+          y: 76,
+          metric: 'PagedAttention',
+          status: 'Healthy',
+          desc: 'Detailed breakdown of high-throughput LLM serving papers, KV cache virtual memory paging, and mathematical notes.'
+        },
+        {
+          id: 'dsa_matrix',
+          name: '14 DSA Pattern Engine',
+          category: 'Algorithmic Revision',
+          icon: Code,
+          x: 68,
+          y: 50,
+          metric: '14 Master Patterns',
+          status: 'Healthy',
+          desc: 'Algorithmic mental models with clean syntax highlighting, edge-case coverage, and complexity breakdowns.'
+        },
+        {
+          id: 'vesper_canvas',
+          name: 'Interactive Studio Canvas',
+          category: 'High-Res Visualizer',
+          icon: Zap,
+          x: 88,
+          y: 50,
+          metric: 'Zero-Latency Pan/Zoom',
+          status: 'Healthy',
+          desc: 'Clean editorial UI built with React & TailwindCSS, delivering zero-latency architectural walkthroughs.'
+        }
+      ],
+      cables: [
+        { from: 'flows_engine', to: 'genai_flows', label: 'Distributed Systems' },
+        { from: 'flows_engine', to: 'papers_deepdive', label: 'Systems Research' },
+        { from: 'genai_flows', to: 'dsa_matrix', label: 'Algorithmic Basis' },
+        { from: 'papers_deepdive', to: 'dsa_matrix', label: 'Memory Complexity' },
+        { from: 'dsa_matrix', to: 'vesper_canvas', label: 'Visual Synthesis' }
+      ],
+      steps: [
+        { nodeId: 'flows_engine', log: '[01/04] Vesper Studio: Loaded 103 System Design Flows (Protocols, LSM-Tree, Sharding)...' },
+        { nodeId: 'genai_flows', log: '[02/04] GenAI Hub: GraphRAG multi-hop retrieval and RAG Triad evaluations initialized...' },
+        { nodeId: 'papers_deepdive', log: '[03/04] Papers Hub: Rendered vLLM PagedAttention KV-cache memory architecture...' },
+        { nodeId: 'dsa_matrix', log: '[04/04] DSA Engine: Linked 14 algorithmic patterns to real-world distributed architectures!' }
+      ]
+    },
+
     autodata: {
       title: 'AutoData: Meta FAIR Adversarial Self-Instruct Loop',
       tagline: 'Compiled LangGraph Multi-Agent Topology • Weak-Strong Capability Divergence',
@@ -1805,7 +2196,7 @@ const SpatialArchitectureStudio = ({ projects, activeProject, setActiveProject }
     }
   };
 
-  const currentTopology = projectTopologies[activeProject] || projectTopologies.autodata;
+  const currentTopology = projectTopologies[activeProject] || projectTopologies.specurag || projectTopologies.autodata;
   const currentNodes = currentTopology.nodes;
   const currentCables = currentTopology.cables;
   const steps = currentTopology.steps;
@@ -1882,8 +2273,8 @@ const SpatialArchitectureStudio = ({ projects, activeProject, setActiveProject }
       {/* 1. HIGH-VISIBILITY PROJECT SELECTOR TABS & ACTION BAR */}
       <div className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-sm transition-all duration-300">
         
-        {/* Top 4-Column Project Card Selector (BOLD & HIGH STANDOUT) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 mb-3.5">
+        {/* Top 6-Column Project Card Selector (BOLD & HIGH STANDOUT) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5 mb-3.5">
           {projects.map((proj) => {
             const isActive = proj.id === activeProject;
             return (
@@ -2264,13 +2655,14 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
   const [copied, setCopied] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [decmasHovered, setDecmasHovered] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   const handleEmailClick = () => {
     if (navigator?.clipboard) {
@@ -2280,21 +2672,77 @@ export default function App() {
     }
     window.location.href = "mailto:grimissher@gmail.com";
   };
-  const initialProject = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('project') || 'autodata';
+  const initialProject = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('project') || 'aegisgateway';
   const [activeProject, setActiveProject] = useState(initialProject);
   const [activeNodeIndex, setActiveNodeIndex] = useState(0);
   const [stackView, setStackView] = useState('cosmos'); // 'cosmos' | 'grid'
 
-  // Permanently enforce clean Editorial Light Mode
+  // Default to Obsidian Dark Mode with persistent localStorage support
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('portfolio-theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      return 'dark'; // DEFAULT DARK
+    }
+    return 'dark';
+  });
+
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.documentElement.classList.remove('dark');
-    document.documentElement.classList.add('light');
-    document.documentElement.style.removeProperty('--accent');
-    document.documentElement.style.removeProperty('--accent-dim');
-    document.documentElement.style.removeProperty('--accent-glow');
-    document.documentElement.style.removeProperty('--accent-subtle');
-  }, []);
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('portfolio-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      localStorage.setItem('portfolio-theme', 'light');
+    }
+  }, [theme]);
+
+  // World-Class Circular Aperture View Transition Ripple
+  const toggleTheme = (e) => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+
+    // If browser doesn't support View Transitions API, gracefully update state
+    if (!document.startViewTransition) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    // Origin coordinates of the user's click
+    const x = e?.clientX ?? window.innerWidth / 2;
+    const y = e?.clientY ?? 0;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      setTheme(nextTheme);
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+      document.documentElement.classList.toggle('light', nextTheme === 'light');
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`
+      ];
+      document.documentElement.animate(
+        {
+          clipPath: clipPath
+        },
+        {
+          duration: 650,
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+          pseudoElement: '::view-transition-new(root)'
+        }
+      );
+    });
+  };
 
   // Google Stitch Cursor-Followed Illumination Effect
   useEffect(() => {
@@ -2324,8 +2772,8 @@ export default function App() {
             key="site-preloader"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.04, filter: 'blur(12px)' }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#f8fafc]"
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[var(--bg-page)]"
           >
             <Preloader />
           </motion.div>
@@ -2335,279 +2783,134 @@ export default function App() {
       {/* ABSTRACT GENERATIVE BACKGROUND (Aurora Mesh + Latent Topography + Cursor Lens) */}
       <AbstractBackground />
 
-      {/* LEFT SIDE FLOATING BUTTONS (CLEAN MINIMAL FLOATING ICONS ONLY) */}
-      <aside className="fixed left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2 pointer-events-auto">
-        <motion.a 
-          href="#hero" 
-          whileHover={{ scale: 1.35 }}
-          whileTap={{ scale: 0.92 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          className="w-8 h-8 flex items-center justify-center font-mono font-bold text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
-        >
-          GS
-        </motion.a>
+      {/* DISTINCT DARK MODE QUANTUM CURSOR & AMBIENT NEBULA */}
+      <DarkQuantumCursor theme={theme} />
 
-        <div className="w-3 h-[1px] bg-[var(--border-divider)] my-0.5 opacity-60" />
+      {/* WORLD-CLASS INTERACTIVE RESUME MODAL */}
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
-        {/* Clean Navigation Icons */}
-        <nav className="flex flex-col items-center gap-1.5">
-          <CleanDockItem href="#hero" label="Manifesto" icon={Sparkles} />
-          <CleanDockItem href="#about" label="About Goldi" icon={User} customBadge="DTU '27" />
-          <CleanDockItem href="#product" label="Consensus Mesh" icon={Globe} customBadge="LIVE" />
-          <CleanDockItem href="#studio" label="Architecture Studio" icon={CircuitBoard} />
-          <CleanDockItem href="#metrics" label="Verified Metrics" icon={Trophy} customBadge="1200+ Solved" />
-          <CleanDockItem href="#stack" label="Engineering Stack" icon={Cpu} />
-          <CleanDockItem href="#reading" label="Bookshelf" icon={BookOpen} customBadge="3 Books" />
-          <CleanDockItem href="#contact" label="Transceiver" icon={Mail} />
-        </nav>
+      {/* LEFT SIDE FLOATING BUBBLE DOCK (LIGHT THEME ONLY) */}
+      {theme === 'light' && (
+        <aside className="fixed left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2 pointer-events-auto">
+          <motion.a 
+            href="#hero" 
+            whileHover={{ scale: 1.35 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="w-8 h-8 flex items-center justify-center font-mono font-bold text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          >
+            GS
+          </motion.a>
 
-        <div className="w-3 h-[1px] bg-[var(--border-divider)] my-0.5 opacity-60" />
+          <div className="w-3 h-[1px] bg-[var(--border-divider)] my-0.5 opacity-60" />
 
-        {/* Social Quick Launchers */}
-        <div className="flex flex-col items-center gap-1.5">
-          <CleanDockItem 
-            href="https://github.com/Grimroze" 
-            label="GitHub" 
-            customBadge="33 Repos" 
-            icon={GithubIcon} 
-            isExternal={true} 
-          />
-          <CleanDockItem 
-            href="https://www.linkedin.com/in/goldi-soni/" 
-            label="LinkedIn" 
-            icon={LinkedinIcon} 
-            isExternal={true} 
-          />
-        </div>
-      </aside>
+          {/* Navigation Icons with Bubble Tooltips */}
+          <nav className="flex flex-col items-center gap-1.5">
+            <CleanDockItem href="#hero" label="Manifesto" icon={Sparkles} />
+            <CleanDockItem href="#about" label="About Goldi" icon={User} customBadge="DTU '27" />
+            <CleanDockItem href="#product" label="Consensus Mesh" icon={Globe} customBadge="LIVE" />
+            <CleanDockItem href="#studio" label="Architecture Studio" icon={CircuitBoard} />
+            <CleanDockItem href="#metrics" label="Verified Metrics" icon={Trophy} customBadge="1200+ Solved" />
+            <CleanDockItem href="#stack" label="Engineering Stack" icon={Cpu} />
+            <CleanDockItem href="#reading" label="Bookshelf" icon={BookOpen} customBadge="3 Books" />
+            <CleanDockItem href="#contact" label="Transceiver" icon={Mail} />
+          </nav>
+
+          <div className="w-3 h-[1px] bg-[var(--border-divider)] my-0.5 opacity-60" />
+
+          {/* Social Quick Launchers + Resume Action + Theme Switcher */}
+          <div className="flex flex-col items-center gap-1.5">
+            <CleanDockItem 
+              href="https://github.com/Grimroze" 
+              label="GitHub" 
+              customBadge="33 Repos" 
+              icon={GithubIcon} 
+              isExternal={true} 
+            />
+            <CleanDockItem 
+              href="https://www.linkedin.com/in/goldi-soni/" 
+              label="LinkedIn" 
+              icon={LinkedinIcon} 
+              isExternal={true} 
+            />
+            {/* Interactive Resume Launcher with Smooth Bubble Scale */}
+            <motion.button
+              onClick={() => setIsResumeOpen(true)}
+              whileHover={{ scale: 1.35 }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="relative p-2 flex items-center justify-center transition-colors group cursor-pointer"
+              aria-label="Curriculum Vitae"
+              title="Curriculum Vitae / Resume"
+            >
+              <FileText size={18} className="text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors" />
+              <span className="absolute left-14 px-2.5 py-1 rounded-lg bg-[var(--bg-card)] border border-[var(--border-card-hover)] text-[11px] font-mono text-[var(--text-primary)] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:left-12 transition-all duration-200 whitespace-nowrap shadow-2xl z-50">
+                Resume (CV)
+                <span className="ml-1.5 opacity-60">(PDF)</span>
+              </span>
+            </motion.button>
+
+            {/* Quick Theme Switcher with Smooth Bubble Scale */}
+            <motion.button
+              onClick={toggleTheme}
+              whileHover={{ scale: 1.35 }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="relative p-2 flex items-center justify-center transition-colors group cursor-pointer"
+              aria-label="Toggle Theme"
+              title={theme === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {theme === 'dark' ? (
+                <Sun size={18} className="text-amber-400 group-hover:rotate-45 transition-transform" />
+              ) : (
+                <Moon size={18} className="text-[var(--accent)] group-hover:-rotate-12 transition-transform" />
+              )}
+              <span className="absolute left-14 px-2.5 py-1 rounded-lg bg-[var(--bg-card)] border border-[var(--border-card-hover)] text-[11px] font-mono text-[var(--text-primary)] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:left-12 transition-all duration-200 whitespace-nowrap shadow-2xl z-50">
+                {theme === 'dark' ? "Light Mode" : "Dark Mode"}
+              </span>
+            </motion.button>
+          </div>
+        </aside>
+      )}
+
+      {/* FLOATING GLASS NAVIGATION CAPSULE (DARK THEME ONLY) */}
+      {theme === 'dark' && (
+        <MinimalNav 
+          theme={theme} 
+          toggleTheme={toggleTheme} 
+          onOpenResume={() => setIsResumeOpen(true)} 
+        />
+      )}
 
       {/* MAIN CONTENT CONTAINER */}
-      <div className="pl-16 sm:pl-24 md:pl-32 pr-6 sm:pr-10 lg:pr-14 max-w-6xl mx-auto pt-16 sm:pt-24 pb-8 relative z-20">
+      <div className={`${theme === 'light' ? 'pl-16 sm:pl-24 md:pl-28 pr-6 sm:pr-10 max-w-6xl pt-6 sm:pt-10' : 'px-4 sm:px-8 max-w-5xl pt-24 sm:pt-28'} mx-auto pb-16 relative z-20`}>
         
-        {/* TOP STATUS BAR */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-[var(--border-divider)] mb-14">
-          <AnimatedTopIdentity />
+        {/* LIGHT MODE TOP BAR (Ticker + Internships Badge • Controls located in left dock) */}
+        {theme === 'light' && (
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-[var(--border-divider)] mb-12">
+            <AnimatedTopIdentity theme={theme} />
 
-          <div className="flex flex-wrap items-center gap-3">
-
-            {/* OPEN TO INTERNSHIPS BADGE (CLEAN MINIMAL SOLID CONTRAST) */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#12141a] text-xs font-mono font-medium text-neutral-900 dark:text-neutral-100 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span className="tracking-tight font-semibold">Open to Internships</span>
+            <div className="flex flex-wrap items-center gap-3">
+              {/* OPEN TO INTERNSHIPS BADGE */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#12141a] text-xs font-mono font-medium text-neutral-900 dark:text-neutral-100 shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="tracking-tight font-semibold">Open to Internships</span>
+              </div>
             </div>
           </div>
-        </div>
-
+        )}
+        
         {/* SECTION 1: HERO MANIFESTO */}
-        <section id="hero" className="mb-32 sm:mb-44 relative">
-          <div className="text-xs font-mono uppercase tracking-[0.25em] text-[var(--text-muted)] font-semibold mb-3">
-            MANIFESTO // GOLDI SONI
-          </div>
+        <ModernHero 
+          theme={theme} 
+          onOpenResume={() => setIsResumeOpen(true)} 
+        />
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-[-0.03em] text-[var(--text-primary)] leading-[1.12] mb-7"
-          >
-            Building intelligent <TypingWord word="systems" start={!isLoading} /> <br className="hidden sm:inline" /> from the ground up.
-          </motion.h1>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-xl mb-9"
-          >
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-[var(--accent)] py-1">
-              <blockquote className="text-xl sm:text-2xl font-serif italic text-[var(--text-primary)] leading-snug tracking-tight">
-                &ldquo;What I cannot create, I do not understand.&rdquo;
-              </blockquote>
-              <div className="text-xs font-mono text-[var(--accent)] font-semibold mt-2 tracking-wide">
-                — Richard Feynman
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Clean Solid Tactile CTA Actions */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap items-center gap-3 mb-12"
-          >
-            <a 
-              href="#about" 
-              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold text-sm hover:opacity-90 transition-all shadow-md"
-            >
-              <span>Meet Goldi Soni</span>
-              <ArrowRight size={15} />
-            </a>
-
-            <a 
-              href="#studio" 
-              className="flex items-center gap-2 px-4 py-3 rounded-xl border border-[var(--border-card)] hover:border-[var(--text-muted)] text-[var(--text-primary)] font-medium text-sm transition-all"
-            >
-              <CircuitBoard size={16} className="text-[var(--accent)]" />
-              <span>Architecture Studio</span>
-            </a>
-
-            <a 
-              href="https://github.com/Grimroze" 
-              target="_blank" 
-              rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-3 rounded-xl border border-[var(--border-card)] hover:border-[var(--text-muted)] text-[var(--text-primary)] font-medium text-sm transition-all"
-            >
-              <GithubIcon className="w-4 h-4" />
-              <span>GitHub (33 Repos)</span>
-            </a>
-          </motion.div>
-
-          {/* PYPI PACKAGE TERMINAL WIDGET */}
-          <motion.div 
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            onMouseEnter={() => setDecmasHovered(true)}
-            onMouseLeave={() => setDecmasHovered(false)}
-            className="max-w-2xl bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] rounded-2xl p-5 backdrop-blur-md shadow-sm relative transition-all duration-300 group"
-          >
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-[var(--border-divider)]">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
-                <span className="text-[11px] font-mono text-[var(--text-muted)] ml-2">bash — Published PyPI Engine</span>
-              </div>
-              
-              <a 
-                href="https://pypi.org/project/decmas/" 
-                target="_blank" 
-                rel="noreferrer"
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[var(--border-card)] hover:border-[var(--text-muted)] text-[11px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shadow-sm"
-              >
-                <PyPIIcon className="w-3.5 h-3.5 text-[#3775A9]" />
-                <span>pypi/decmas</span>
-                <span className="text-[10px] text-[var(--accent)] font-bold">v0.1.1</span>
-                <ArrowUpRight size={11} className="opacity-60" />
-              </a>
-            </div>
-
-            <div className="flex items-center justify-between gap-4 font-mono text-sm sm:text-base py-1">
-              <div className="flex items-center gap-3 overflow-hidden">
-                <span className="text-[var(--accent)] font-bold select-none">$</span>
-                <code className="text-[var(--text-primary)] font-medium">pip install decmas</code>
-              </div>
-
-              <button
-                onClick={handleCopy}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border-card)] hover:border-[var(--text-muted)] text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shrink-0"
-              >
-                {copied ? <Check size={13} className="text-emerald-500" /> : <Copy size={13} />}
-                <span>{copied ? "Copied" : "Copy"}</span>
-              </button>
-            </div>
-
-            {/* Hover Micro-Telemetry Drawer */}
-            <div className={`overflow-hidden transition-all duration-300 font-mono text-xs ${decmasHovered ? 'max-h-24 opacity-100 mt-3 pt-3 border-t border-[var(--border-divider)]' : 'max-h-0 opacity-0'}`}>
-              <div className="flex flex-wrap items-center justify-between gap-2 text-[var(--text-muted)]">
-                <span>Distributed Swarm Execution • Thread-Locked Task Claims</span>
-                <span className="text-[var(--accent)]">Stanford DeLM Architecture</span>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* SECTION 2: ABOUT ME & AVATAR SHOWCASE (MINIMAL & STUNNING) */}
-        <motion.section 
-          id="about"
-          initial={{ opacity: 0, y: 55, filter: 'blur(3px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          viewport={{ once: false, amount: 0.12 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-32 sm:mb-44"
-        >
-          <div className="text-xs font-mono uppercase tracking-[0.25em] text-[var(--text-muted)] font-semibold mb-2">
-            00 // OPERATOR IDENTITY
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight mb-8">
-            Engineering Intelligence From First Principles
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            {/* Left Column: Editorial Bio & Specs (7 cols) */}
-            <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-              <div className="space-y-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-normal">
-                <p>
-                  I am an <strong className="text-[var(--text-primary)] font-semibold">AI Systems Engineer</strong> and final year Computer Science undergraduate at <strong className="text-[var(--text-primary)] font-semibold">Delhi Technological University (DTU '27)</strong>.
-                </p>
-                <p>
-                  My work bridges the gap between high-level autonomous agent research and low-latency, deterministic distributed infrastructure. Rather than chaining together arbitrary prompt templates, I build <strong className="text-[var(--text-primary)] font-semibold">asynchronous execution swarms, LLM-as-a-Verifier safety frameworks, and thread-locked task schedulers</strong>.
-                </p>
-                <p>
-                  I author open-source systems software like <strong className="text-[var(--text-primary)] font-semibold">decmas</strong> (published on PyPI), compete in high-stakes competitive programming (LeetCode Knight, 1200+ solved, top ~3%), and captain esports teams as In-Game Leader (IGL) — translating high-pressure composure into rock-solid software architecture.
-                </p>
-              </div>
-
-              {/* Minimalist Engineering Highlights Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-[var(--border-divider)] font-mono text-xs">
-                <div className="p-3 rounded-xl border border-[var(--border-card)]">
-                  <div className="text-[var(--text-muted)] text-[10px]">CAMPUS</div>
-                  <div className="font-bold text-[var(--text-primary)] mt-1">DTU CSE '27</div>
-                </div>
-                <div className="p-3 rounded-xl border border-[var(--border-card)]">
-                  <div className="text-[var(--text-muted)] text-[10px]">PACKAGES</div>
-                  <div className="font-bold text-[var(--accent)] mt-1">PyPI Author</div>
-                </div>
-                <div className="p-3 rounded-xl border border-[var(--border-card)]">
-                  <div className="text-[var(--text-muted)] text-[10px]">PROBLEM SOLVING</div>
-                  <div className="font-bold text-[var(--text-primary)] mt-1">1200+ Solved</div>
-                </div>
-                <div className="p-3 rounded-xl border border-[var(--border-card)]">
-                  <div className="text-[var(--text-muted)] text-[10px]">LEADERSHIP</div>
-                  <div className="font-bold text-[var(--text-primary)] mt-1">Esports IGL</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Unboxed Architectural Portal & Radiant Aura (5 cols) */}
-            <div className="lg:col-span-5 relative flex items-center justify-center min-h-[440px] select-none py-4">
-              {/* Atmospheric Radial Aura matching vibrant flame tones */}
-              <div className="absolute w-[360px] sm:w-[400px] h-[360px] sm:h-[400px] rounded-full bg-gradient-to-tr from-amber-500/25 via-rose-500/20 to-indigo-500/15 blur-3xl pointer-events-none animate-pulse" />
-              
-              {/* Orbital Focus Rings */}
-              <div className="absolute w-[380px] sm:w-[410px] h-[380px] sm:h-[410px] rounded-full border border-dashed border-[var(--accent)]/20 pointer-events-none" />
-              <div className="absolute w-[440px] sm:w-[470px] h-[440px] sm:h-[470px] rounded-full border border-black/[0.04] pointer-events-none" />
-
-              {/* Floating Architectural Portal Silhouette */}
-              <motion.div 
-                animate={{ y: [0, -7, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative group w-[300px] sm:w-[325px] h-[390px] sm:h-[420px] rounded-[160px_160px_48px_48px] overflow-hidden shadow-[0_24px_50px_-16px_rgba(249,115,22,0.25)] border border-black/10 ring-1 ring-white/80 bg-slate-100"
-              >
-                <img 
-                  src="/avatar.jpg" 
-                  alt="Goldi Soni - AI Systems Engineer" 
-                  className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
-                  style={{ filter: "contrast(1.06) saturate(1.12)" }}
-                />
-                
-                {/* Subtle Bottom Frosted Glass Gradient Inside Portal */}
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-between font-mono text-xs text-white pointer-events-none">
-                  <span className="font-medium opacity-90">AI Systems &amp; Swarms</span>
-                  <span className="text-amber-400 font-bold">DTU '27</span>
-                </div>
-              </motion.div>
-
-
-            </div>
-
-          </div>
-        </motion.section>
+        {/* SECTION 2: ABOUT OPERATOR IDENTITY */}
+        <ModernAbout theme={theme} />
 
         {/* SECTION 3: FLAGSHIP PRODUCT (HYPERSCALE NODE NETWORK) */}
         <motion.section 
@@ -2616,7 +2919,7 @@ export default function App() {
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: false, amount: 0.12 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-32 sm:mb-44"
+          className="mb-32 sm:mb-44 scroll-mt-24 sm:scroll-mt-28"
         >
           <div className="text-xs font-mono uppercase tracking-[0.25em] text-[var(--text-muted)] font-semibold mb-2">
             01 // DISTRIBUTED SYSTEMS ARCHITECTURE SIMULATOR
@@ -2638,7 +2941,7 @@ export default function App() {
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: false, amount: 0.12 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-32 sm:mb-44"
+          className="mb-32 sm:mb-44 scroll-mt-24 sm:scroll-mt-28"
         >
           <div className="text-xs font-mono uppercase tracking-[0.25em] text-[var(--text-muted)] font-semibold mb-2">
             02 // SELECTED WORK
@@ -2656,7 +2959,7 @@ export default function App() {
 
             <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)]">
               <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
-              <span>4 Interactive Topologies</span>
+              <span>6 Interactive Topologies</span>
             </div>
           </div>
 
@@ -2666,6 +2969,9 @@ export default function App() {
             activeProject={activeProject}
             setActiveProject={setActiveProject}
           />
+
+          {/* Vesper & SpecuRAG Interactive Architecture & Systems Matrix */}
+          <VesperArchitectureShowcase theme={theme} />
 
           {/* Deep Learning Projects & Experiments Vault (Collapsible) */}
           <DeepLearningVault />
@@ -2680,7 +2986,7 @@ export default function App() {
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: false, amount: 0.12 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-32 sm:mb-44"
+          className="mb-32 sm:mb-44 scroll-mt-24 sm:scroll-mt-28"
         >
           <div className="text-xs font-mono uppercase tracking-[0.25em] text-[var(--text-muted)] font-semibold mb-2">
             03 // PROVEN TRACK RECORD
@@ -2807,7 +3113,7 @@ export default function App() {
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-[var(--text-primary)] mb-1">Delhi Technological University</h3>
-                <p className="text-xs font-mono text-[var(--accent)] mb-3">B.Tech Computer Science (2023–2027)</p>
+                <p className="text-xs font-mono text-[var(--accent)] mb-3">B.Tech Computer Science (2023–2027) • Roll: 23/CS/158</p>
                 <div className="space-y-2 text-xs text-[var(--text-secondary)] font-mono">
                   <div className="flex items-center justify-between">
                     <span className="text-[var(--text-muted)]">B.Tech CS CGPA</span>
@@ -2818,13 +3124,58 @@ export default function App() {
                     <span className="text-[var(--text-primary)] font-bold">93.4%</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[var(--text-muted)]">HACKJMI 2025</span>
+                    <span className="text-[var(--text-muted)]">Class X (School of Excellence)</span>
+                    <span className="text-[var(--text-primary)] font-bold">91.6%</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[var(--text-muted)]">HACKJMI Finalist</span>
                     <span className="text-[var(--text-primary)] font-medium">Mental Health Engine</span>
                   </div>
                 </div>
               </div>
               <div className="mt-8 pt-4 border-t border-[var(--border-divider)] text-[11px] font-mono text-[var(--text-muted)]">
                 Delhi, India • Active Engineering Undergrad
+              </div>
+            </div>
+
+            {/* CARD 4: WORK EXPERIENCE (OUTLIER AI / SCALE AI) */}
+            <div className="bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--border-card-hover)] p-6 sm:p-7 rounded-3xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between group shadow-sm">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">Work Experience</span>
+                  <div className="w-8 h-8 rounded-full border border-[var(--border-card)] flex items-center justify-center text-emerald-400">
+                    <Shield size={16} />
+                  </div>
+                </div>
+
+                <div className="flex items-baseline gap-2.5 mb-1">
+                  <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] tracking-tight">Outlier AI</h3>
+                  <span className="text-xs font-mono text-[var(--text-muted)]">(Scale AI)</span>
+                </div>
+                <div className="text-xs font-mono font-semibold text-emerald-400 mb-3 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>AI Coding & Model Evaluator (Freelance) • June 2026 – Present</span>
+                </div>
+
+                <div className="space-y-2.5 text-xs text-[var(--text-secondary)] font-normal leading-relaxed">
+                  <div className="p-2.5 rounded-xl border border-[var(--border-divider)] bg-[var(--bg-page)]/40">
+                    <span className="font-semibold text-[var(--text-primary)]">RLHF & Alignment: </span>
+                    <span>Evaluated complex Python & C++ code solutions for frontier LLMs using RLHF to align outputs with intent.</span>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-[var(--border-divider)] bg-[var(--bg-page)]/40">
+                    <span className="font-semibold text-[var(--text-primary)]">Adversarial Stress-Testing: </span>
+                    <span>Crafted multi-turn conversational scenarios to stress-test reasoning, detect hallucinations, and refine CoT generation.</span>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-[var(--border-divider)] bg-[var(--bg-page)]/40">
+                    <span className="font-semibold text-[var(--text-primary)]">Comparative Benchmarking: </span>
+                    <span>Graded & ranked comparative model responses across correctness, algorithmic efficiency, security, and instructions.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 pt-4 border-t border-[var(--border-divider)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
+                <span>Frontier LLM Evaluation</span>
+                <span className="text-emerald-400 font-semibold">Active Operator</span>
               </div>
             </div>
 
@@ -2861,7 +3212,7 @@ export default function App() {
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: false, amount: 0.12 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-32 sm:mb-44"
+          className="mb-32 sm:mb-44 scroll-mt-24 sm:scroll-mt-28"
         >
           <div className="text-xs font-mono uppercase tracking-[0.25em] text-[var(--text-muted)] font-semibold mb-2">
             04 // PRODUCTION RUNTIME
@@ -2941,98 +3292,18 @@ export default function App() {
         {/* SECTION DIVIDER */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border-divider)] to-transparent my-28 sm:my-40 opacity-60" />
 
-        {/* SECTION 06: CONTACT & TRANSCEIVER HUB */}
-        <motion.section 
-          id="contact"
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="pt-6 pb-2"
-        >
-          {/* Minimal Clean Connect Layout: Manifesto on Left, Sleek Buttons on Right */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 py-4 border-b border-slate-200">
-            <div>
-              <div className="text-xs font-mono uppercase tracking-[0.2em] text-indigo-600 font-semibold mb-1.5 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse" />
-                <span>06 // CONNECT</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-                Let's construct ambitious systems.
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 font-normal mt-1 max-w-lg">
-                Open to software engineering roles, autonomous agent research, and high-performance backend infrastructure.
-              </p>
-            </div>
-
-            {/* Minimal compact button row: side-by-side, no giant empty box */}
-            <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0 flex-wrap pt-8 pb-3 overflow-visible">
-              {socialChannels.map((channel) => (
-                <div 
-                  key={channel.name} 
-                  className="social-tooltip-container" 
-                  style={{ '--social-color': channel.color }}
-                >
-                  {/* Floating Profile Tooltip */}
-                  <div className="tooltip">
-                    <div className="profile">
-                      <div className="user">
-                        <div className="img">
-                          {channel.icon("w-5 h-5")}
-                        </div>
-                        <div className="details">
-                          <div className="name">{channel.title}</div>
-                          <div className="username">{channel.username}</div>
-                        </div>
-                      </div>
-                      <div className="about">{channel.stats}</div>
-                    </div>
-                  </div>
-
-                  {/* 3D Isometric Layer Fan-Out Button */}
-                  <a 
-                    className="icon" 
-                    href={channel.href}
-                    target={channel.href.startsWith('mailto:') ? undefined : "_blank"}
-                    rel="noreferrer"
-                    aria-label={channel.name}
-                    onClick={(e) => {
-                      if (channel.href.startsWith('mailto:') && navigator?.clipboard) {
-                        navigator.clipboard.writeText("grimissher@gmail.com");
-                      }
-                    }}
-                  >
-                    <div className="layer">
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                      <span className="social-icon-face">
-                        {channel.icon("w-6 h-6")}
-                      </span>
-                    </div>
-                    <div className="text">{channel.name}</div>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Retro Arcade Pac-Man & Pixel Ghost Chase Runway */}
-          <div className="mt-5">
-            <PacmanRunner />
-          </div>
-        </motion.section>
+        {/* SECTION 06: CONTACT & ENGINEERING NETWORK */}
+        <ModernConnect onOpenResume={() => setIsResumeOpen(true)} />
 
       </div>
 
       {/* SEAMLESS MINIMAL FOOTER (No Highlighted Box, Cleanly Centered) */}
       <footer className="w-full py-8 text-center relative z-20">
-        <div className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-500 hover:text-slate-800 transition-colors">
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
           <span>Made with</span>
           <span className="text-pink-500 animate-pulse text-sm">💗</span>
           <span>&amp;</span>
-          <span className="text-amber-800 text-sm">☕</span>
+          <span className="text-amber-600 dark:text-amber-400 text-sm">☕</span>
           <span>by</span>
           <a 
             href="https://github.com/Grimroze" 
